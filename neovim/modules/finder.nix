@@ -39,11 +39,13 @@ in
       require("telescope").load_extension("ui-select")
 
       local find_files = function ()
-          if require("telescope.builtin").git_files() then
-              return
-          end
+          vim.fn.system("git rev-parse --is-inside-work-tree")
 
-          require("telescope.builtin").find_files()
+          if vim.v.shell_error == 0 then
+            require("telescope.builtin").git_files()
+          else
+            require("telescope.builtin").find_files()
+          end
       end
 
       -- Bind a smart fuzzy finder to <C-p>.
