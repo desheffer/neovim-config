@@ -9,6 +9,16 @@ let
 
       neovim = lib.mkNeovim {
         inherit system;
+
+        config = {
+          modules.lsp.enable = true;
+        };
+      };
+
+      neovim-light = lib.mkNeovim {
+        inherit system;
+
+        config = { };
       };
     }
   );

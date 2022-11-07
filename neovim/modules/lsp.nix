@@ -7,9 +7,15 @@ let
 
 in
 {
-  options.modules.lsp = { };
+  options.modules.lsp = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable language servers.";
+      default = false;
+    };
+  };
 
-  config.modules.neovim = {
+  config.modules.neovim = mkIf cfg.enable {
     plugins = with pkgs.vimPluginsFromInputs; [
       lsp_signature-nvim
       nvim-lspconfig
