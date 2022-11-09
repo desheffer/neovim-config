@@ -32,9 +32,11 @@ docker run -it --rm \
 You can include this repository in other flakes by adding it as an input:
 
 ```nix
-inputs = {
-  neovim-flake.url = "github:desheffer/neovim-flake";
-};
+{
+  inputs = {
+    neovim-flake.url = "github:desheffer/neovim-flake";
+  };
+}
 ```
 
 [nix-download]: https://nixos.org/download.html
