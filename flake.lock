@@ -287,6 +287,22 @@
         "type": "github"
       }
     },
+    "noice-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668950128,
+        "narHash": "sha256-mFETqu3R6JPCPaVIzeXI5DGalgfHZgbnJSzqQdZREn0=",
+        "owner": "folke",
+        "repo": "noice.nvim",
+        "rev": "c0d4e174e407bd6824bf14c8ea3d2e24439defbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "noice.nvim",
+        "type": "github"
+      }
+    },
     "nui-nvim": {
       "flake": false,
       "locked": {
@@ -483,6 +499,7 @@
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
         "nixpkgs": "nixpkgs",
+        "noice-nvim": "noice-nvim",
         "nui-nvim": "nui-nvim",
         "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",

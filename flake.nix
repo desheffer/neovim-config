@@ -22,6 +22,7 @@
     lsp_signature-nvim = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
     lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
     luasnip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
+    noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
     nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
