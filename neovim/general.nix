@@ -1,15 +1,20 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.general;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.general;
 
 in
 {
-  options.modules.general = { };
+  options.programs.neovim-config.general = { };
 
-  config.modules.neovim = {
+  config.programs.neovim-config = {
     config = ''
       -- Disable mouse support.
       vim.opt.mouse = ""

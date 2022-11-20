@@ -1,4 +1,4 @@
-# Neovim flake
+# Neovim config
 
 This repository contains my Neovim configuration as a Nix flake.
 
@@ -7,7 +7,7 @@ This repository contains my Neovim configuration as a Nix flake.
 Install [Nix][nix-download] and run the following:
 
 ```sh
-nix run github:desheffer/neovim-flake
+nix run github:desheffer/neovim-config
 ```
 
 Or, if you have a local copy of this repository:
@@ -24,7 +24,7 @@ docker run -it --rm \
     -e NIX_CONFIG='experimental-features = nix-command flakes' \
     -e TERM=xterm-256color \
     nixpkgs/nix \
-    nix run github:desheffer/neovim-flake
+    nix run github:desheffer/neovim-config
 ```
 
 ### 🔨 Installation
@@ -34,8 +34,21 @@ You can include this repository in other flakes by adding it as an input:
 ```nix
 {
   inputs = {
-    neovim-flake.url = "github:desheffer/neovim-flake";
+    neovim-config.url = "github:desheffer/neovim-config";
   };
+}
+```
+
+Then, install it using the Home Manager module:
+
+```nix
+{
+    configuration.imports = [
+        neovim-config.nixosModules.home-manager.neovim
+        {
+            programs.neovim-config.enable = true;
+        }
+    ];
 }
 ```
 

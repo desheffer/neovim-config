@@ -1,19 +1,33 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.finder;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.finder;
 
 in
 {
-  options.modules.finder = { };
+  options.programs.neovim-config.finder = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      plenary-nvim
-      telescope-nvim
-      telescope-ui-select-nvim
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "plenary-nvim";
+        src = inputs.plenary-nvim;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "telescope-nvim";
+        src = inputs.telescope-nvim;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "telescope-ui-select-nvim";
+        src = inputs.telescope-ui-select-nvim;
+      })
     ];
 
     config = ''

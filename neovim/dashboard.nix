@@ -1,17 +1,25 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.dashboard;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.dashboard;
 
 in
 {
-  options.modules.dashboard = { };
+  options.programs.neovim-config.dashboard = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      alpha-nvim
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "alpha-nvim";
+        src = inputs.alpha-nvim;
+      })
     ];
 
     config = ''

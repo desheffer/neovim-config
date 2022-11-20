@@ -1,7 +1,7 @@
 inputs@{ flake-utils, ... }:
 
 let
-  lib = import ../../lib inputs;
+  lib = import ../lib inputs;
 
   mkPackages = (system:
     rec {
@@ -10,15 +10,15 @@ let
       neovim = lib.mkNeovim {
         inherit system;
 
-        config = {
-          modules.lsp.enable = true;
+        config.programs.neovim-config = {
+          lsp.enable = true;
         };
       };
 
       neovim-light = lib.mkNeovim {
         inherit system;
 
-        config = { };
+        config.programs.neovim-config = { };
       };
     }
   );

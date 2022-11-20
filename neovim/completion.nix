@@ -1,22 +1,45 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.completion;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.completion;
 
 in
 {
-  options.modules.completion = { };
+  options.programs.neovim-config.completion = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      cmp-buffer
-      cmp-nvim-lsp
-      cmp_luasnip
-      friendly-snippets
-      luasnip
-      nvim-cmp
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "cmp-buffer";
+        src = inputs.cmp-buffer;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "cmp-nvim-lsp";
+        src = inputs.cmp-nvim-lsp;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "cmp_luasnip";
+        src = inputs.cmp_luasnip;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "friendly-snippets";
+        src = inputs.friendly-snippets;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "luasnip";
+        src = inputs.luasnip;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-cmp";
+        src = inputs.nvim-cmp;
+      })
     ];
 
     config = ''

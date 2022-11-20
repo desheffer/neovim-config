@@ -1,17 +1,25 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.tree;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.tree;
 
 in
 {
-  options.modules.tree = { };
+  options.programs.neovim-config.tree = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      nvim-tree-lua
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-tree-lua";
+        src = inputs.nvim-tree-lua;
+      })
     ];
 
     config = ''

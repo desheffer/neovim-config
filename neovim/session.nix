@@ -1,17 +1,25 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.session;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.session;
 
 in
 {
-  options.modules.session = { };
+  options.programs.neovim-config.session = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      auto-session
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "auto-session";
+        src = inputs.auto-session;
+      })
     ];
 
     config = ''

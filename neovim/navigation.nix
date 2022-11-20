@@ -1,20 +1,37 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.navigation;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.navigation;
 
 in
 {
-  options.modules.navigation = { };
+  options.programs.neovim-config.navigation = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      hop-nvim
-      nvim-hlslens
-      vim-asterisk
-      vim-signature
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "hop-nvim";
+        src = inputs.hop-nvim;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-hlslens";
+        src = inputs.nvim-hlslens;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "vim-asterisk";
+        src = inputs.vim-asterisk;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "vim-signature";
+        src = inputs.vim-signature;
+      })
     ];
 
     config = ''

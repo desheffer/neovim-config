@@ -1,17 +1,25 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.colorscheme;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.colorscheme;
 
 in
 {
-  options.modules.colorscheme = { };
+  options.programs.neovim-config.colorscheme = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      gruvbox-material
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "gruvbox-material";
+        src = inputs.gruvbox-material;
+      })
     ];
 
     config = ''

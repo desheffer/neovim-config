@@ -1,9 +1,14 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.neovim;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config;
 
   neovimConfig = {
     viAlias = true;
@@ -28,7 +33,7 @@ let
 
 in
 {
-  options.modules.neovim = {
+  options.programs.neovim-config = {
     leader = mkOption {
       type = types.str;
       description = "Set the mapleader value.";
@@ -62,8 +67,8 @@ in
   };
 
   config = {
-    modules.neovim.finalPackage = pkgs.wrapNeovim pkgs.neovim-unwrapped (
-      neovimConfig
-    );
+    programs.neovim-config.finalPackage = pkgs'.wrapNeovim
+      pkgs'.neovim-unwrapped
+      neovimConfig;
   };
 }

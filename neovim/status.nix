@@ -1,18 +1,29 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.interface;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.interface;
 
 in
 {
-  options.modules.interface = { };
+  options.programs.neovim-config.interface = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      lualine-nvim
-      nvim-web-devicons
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "lualine-nvim";
+        src = inputs.lualine-nvim;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-web-devicons";
+        src = inputs.nvim-web-devicons;
+      })
     ];
 
     config = ''

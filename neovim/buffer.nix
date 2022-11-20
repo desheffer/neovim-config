@@ -1,18 +1,29 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.buffer;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.buffer;
 
 in
 {
-  options.modules.buffer = { };
+  options.programs.neovim-config.buffer = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      bufferline-nvim
-      nvim-web-devicons
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "bufferline-nvim";
+        src = inputs.bufferline-nvim;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-web-devicons";
+        src = inputs.nvim-web-devicons;
+      })
     ];
 
     config = ''

@@ -1,13 +1,18 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.lsp;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.lsp;
 
 in
 {
-  options.modules.lsp = {
+  options.programs.neovim-config.lsp = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable language servers.";
@@ -15,13 +20,19 @@ in
     };
   };
 
-  config.modules.neovim = mkIf cfg.enable {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      lsp_signature-nvim
-      nvim-lspconfig
+  config.programs.neovim-config = mkIf cfg.enable {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "lsp_signature-nvim";
+        src = inputs.lsp_signature-nvim;
+      })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-lspconfig";
+        src = inputs.nvim-lspconfig;
+      })
     ];
 
-    extraPackages = with pkgs; with nodePackages; [
+    extraPackages = with pkgs'; with nodePackages; [
       bash-language-server
       ccls
       dockerfile-language-server-nodejs

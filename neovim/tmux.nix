@@ -1,17 +1,25 @@
+inputs@{ ... }:
+
 { config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  cfg = config.modules.tmux;
+  lib' = import ../lib inputs;
+  pkgs' = lib'.mkPkgs pkgs.system;
+
+  cfg = config.programs.neovim-config.tmux;
 
 in
 {
-  options.modules.tmux = { };
+  options.programs.neovim-config.tmux = { };
 
-  config.modules.neovim = {
-    plugins = with pkgs.vimPluginsFromInputs; [
-      vim-tmux-navigator
+  config.programs.neovim-config = {
+    plugins = [
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "vim-tmux-navigator";
+        src = inputs.vim-tmux-navigator;
+      })
     ];
 
     config = ''

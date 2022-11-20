@@ -3,20 +3,21 @@ inputs@{ ... }:
 { system, config ? { }, ... }:
 
 let
-  lib = import ../../lib inputs;
-
+  lib = import ../lib inputs;
   pkgs = lib.mkPkgs system;
 
   eval = pkgs.lib.evalModules {
     specialArgs = {
-      inherit pkgs;
+      pkgs = {
+        inherit system;
+      };
     };
 
     modules = [
-      ../modules
+      (import ../neovim inputs)
       config
     ];
   };
 
 in
-eval.config.modules.neovim.finalPackage
+eval.config.programs.neovim-config.finalPackage

@@ -2,7 +2,7 @@
   description = "Doug's Neovim Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -22,8 +22,6 @@
     lsp_signature-nvim = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
     lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
     luasnip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
-    neoscroll-nvim = { url = "github:karb94/neoscroll.nvim"; flake = false; };
-    noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
     nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
@@ -31,7 +29,6 @@
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-notify = { url = "github:rcarriga/nvim-notify"; flake = false; };
     nvim-tree-lua = { url = "github:nvim-tree/nvim-tree.lua"; flake = false; };
-    nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     nvim-treesitter-context = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
     nvim-web-devicons = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
@@ -50,8 +47,11 @@
 
   outputs = inputs@{ ... }:
     {
+      # Modules for use in other flakes:
+      hmModules.neovim = import ./modules/home-manager.nix inputs;
+
       # Packages provided by `nix run`:
-      packages = import ./neovim/configurations inputs;
+      packages = import ./pkgs/packages.nix inputs;
 
       # Formatter provided by `nix fmt`:
       formatter = import ./formatter inputs;
