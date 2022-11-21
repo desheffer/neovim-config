@@ -10,26 +10,18 @@ Install [Nix][nix-download] and run the following:
 nix run github:desheffer/neovim-config
 ```
 
-Or, if you have a local copy of this repository:
-
-```sh
-nix run
-```
-
-If you do not have Nix installed, you can run these steps in a Docker
-container:
+You can also try out this configuration by running it in a Docker container:
 
 ```sh
 docker run -it --rm \
     -e NIX_CONFIG='experimental-features = nix-command flakes' \
-    -e TERM=xterm-256color \
     nixpkgs/nix \
     nix run github:desheffer/neovim-config
 ```
 
-### 🔨 Installation
+## 🔨 Installation
 
-You can include this repository in other flakes by adding it as an input:
+You can use this repository in other flakes by adding it as an input:
 
 ```nix
 {
@@ -39,17 +31,15 @@ You can include this repository in other flakes by adding it as an input:
 }
 ```
 
-Then, install it using the Home Manager module:
+Then, add the following to your Home Manager configuration:
 
 ```nix
-{
-    configuration.imports = [
-        neovim-config.nixosModules.home-manager.neovim
-        {
-            programs.neovim-config.enable = true;
-        }
-    ];
-}
+[
+  neovim-config.hmModules.neovim
+  {
+    programs.neovim-config.enable = true;
+  }
+]
 ```
 
 [nix-download]: https://nixos.org/download.html
