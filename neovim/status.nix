@@ -27,15 +27,12 @@ in
     ];
 
     config = ''
-      -- Hide redundant notification of current mode.
-      vim.opt.showmode = false
-
       require("lualine").setup({
         options = {
+          theme = "gruvbox",
           disabled_filetypes = {"NvimTree"},
           section_separators = {left = "", right = ""},
           component_separators = {left = "", right = ""},
-          globalstatus = true,
         },
         sections = {
           lualine_b = {
