@@ -161,9 +161,9 @@ in
       vim.keymap.set("n", "gr", function () require("telescope.builtin").lsp_references({jump_type = "never"}) end)
       vim.keymap.set("n", "K",  function () vim.lsp.buf.hover() end)
       vim.keymap.set("n", "<Leader>ca", function () vim.lsp.buf.code_action() end)
-      vim.keymap.set("v", "<Leader>ca", function () vim.lsp.buf.range_code_action() end)
-      vim.keymap.set("n", "<Leader>cf", function () vim.lsp.buf.formatting() end)
-      vim.keymap.set("v", "<Leader>cf", function () vim.lsp.buf.range_formatting() end)
+      vim.keymap.set("v", "<Leader>ca", function () vim.lsp.buf.code_action() end)
+      vim.keymap.set("n", "<Leader>cf", function () vim.lsp.buf.format({async = true}) end)
+      vim.keymap.set("v", "<Leader>cf", function () vim.lsp.buf.format({async = true}) end)
       vim.keymap.set("n", "<Leader>cr", function () vim.lsp.buf.rename() end)
 
       -- Bind various diagnostic commands.
