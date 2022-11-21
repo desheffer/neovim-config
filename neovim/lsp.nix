@@ -23,10 +23,6 @@ in
   config.programs.neovim-config = mkIf cfg.enable {
     plugins = [
       (pkgs'.vimUtils.buildVimPluginFrom2Nix {
-        name = "lsp_signature-nvim";
-        src = inputs.lsp_signature-nvim;
-      })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
         name = "nvim-lspconfig";
         src = inputs.nvim-lspconfig;
       })
@@ -132,27 +128,10 @@ in
         capabilities = capabilities,
       })
 
-      require("lsp_signature").setup({
-          hint_enable = false,
-          toggle_key = "<C-k>",
-      })
-
       vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticSignError"})
       vim.fn.sign_define("DiagnosticSignWarn",  {text = "", texthl = "DiagnosticSignWarn"})
       vim.fn.sign_define("DiagnosticSignInfo",  {text = "", texthl = "DiagnosticSignInfo"})
       vim.fn.sign_define("DiagnosticSignHint",  {text = "", texthl = "DiagnosticSignHint"})
-
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-          vim.lsp.handlers.hover, {
-              border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
-          }
-      )
-
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-          vim.lsp.handlers.signature_help, {
-              border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
-          }
-      )
 
       -- Bind various LSP commands.
       vim.keymap.set("n", "gd", function () require("telescope.builtin").lsp_definitions({jump_type = "never"}) end)

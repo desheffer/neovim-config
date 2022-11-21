@@ -24,13 +24,20 @@ in
         name = "nui-nvim";
         src = inputs.nui-nvim;
       })
+      # TODO: Enable nvim-notify, but don't use it for all messages.
+      # (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      #   name = "nvim-notify";
+      #   src = inputs.nvim-notify;
+      # })
     ];
 
     config = ''
       require("noice").setup({
         lsp = {
-          signature = {
-            enabled = false,
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
           },
         },
         messages = {
@@ -39,7 +46,13 @@ in
         popupmenu = {
           backend = "cmp",
         },
+        presets = {
+          long_message_to_split = true,
+        },
       })
+
+      -- Bind history command.
+      vim.keymap.set("n", "<Leader>fn", function () vim.cmd([[Noice telescope]]) end)
     '';
   };
 }

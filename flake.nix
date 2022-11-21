@@ -19,7 +19,6 @@
     gruvbox-material = { url = "github:sainnhe/gruvbox-material"; flake = false; };
     hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
     indent-blankline-nvim = { url = "github:lukas-reineke/indent-blankline.nvim"; flake = false; };
-    lsp_signature-nvim = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
     lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
     luasnip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
     noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
