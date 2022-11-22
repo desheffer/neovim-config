@@ -6,6 +6,8 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    neovim.url = "github:neovim/neovim?dir=contrib";
+
     FTerm-nvim = { url = "github:numToStr/FTerm.nvim"; flake = false; };
     alpha-nvim = { url = "github:goolord/alpha-nvim"; flake = false; };
     auto-session = { url = "github:rmagatti/auto-session"; flake = false; };

@@ -1,4 +1,4 @@
-inputs@{ ... }:
+inputs@{ neovim, ... }:
 
 { config, lib, pkgs, ... }:
 
@@ -68,7 +68,7 @@ in
 
   config = {
     programs.neovim-config.finalPackage = pkgs'.wrapNeovim
-      pkgs'.neovim-unwrapped
+      neovim.packages.${pkgs.system}.neovim
       neovimConfig;
   };
 }
