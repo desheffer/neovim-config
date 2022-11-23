@@ -30,6 +30,10 @@ in
       })
     ];
 
+    extraPackages = with pkgs'; [
+      fd
+    ];
+
     config = ''
       require("telescope").setup({
         defaults = {
