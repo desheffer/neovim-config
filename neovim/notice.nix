@@ -24,11 +24,10 @@ in
         name = "nui-nvim";
         src = inputs.nui-nvim;
       })
-      # TODO: Enable nvim-notify, but don't use it for all messages.
-      # (pkgs'.vimUtils.buildVimPluginFrom2Nix {
-      #   name = "nvim-notify";
-      #   src = inputs.nvim-notify;
-      # })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "nvim-notify";
+        src = inputs.nvim-notify;
+      })
     ];
 
     config = ''
@@ -41,7 +40,7 @@ in
           },
         },
         messages = {
-          view_search = false,
+          enabled = false,
         },
         popupmenu = {
           backend = "cmp",
