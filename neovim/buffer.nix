@@ -166,9 +166,9 @@ in
       -- Create a new buffer with <C-n>.
       vim.keymap.set("n", "<C-n>", function () vim.cmd([[enew]]) end)
 
-      -- Cycle buffers with <M-Pageup> and <M-Pagedown> (for consistency with Tmux).
-      vim.keymap.set("n", "<M-Pageup>",   next)
-      vim.keymap.set("n", "<M-Pagedown>", prev)
+      -- Cycle buffers with <C-PageDown> and <C-PageUp> (for consistency with GUI tabs).
+      vim.keymap.set("n", "<C-PageDown>", next)
+      vim.keymap.set("n", "<C-PageUp>", prev)
 
       -- Cycle buffers with gt and gT (for consistency with vanilla Vim tabs).
       vim.keymap.set("n", "gt", next)
