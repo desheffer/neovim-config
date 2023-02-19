@@ -58,7 +58,6 @@ in
       dashboard.section.buttons.val = {
         button("New",          "<C-n>"),
         button("Files",        "<C-p>"),
-        button("Sessions",     "<Space>fs"),
         button("Recent Files", "<Space>fo"),
         button("Grep",         "<Space>fg"),
       }
