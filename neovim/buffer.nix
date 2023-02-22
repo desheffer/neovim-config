@@ -60,7 +60,7 @@ in
 
         -- Avoid getting stuck on an unlisted buffer.
         if not buflisted and #windows <= 1 then
-          pcall(vim.cmd, [[bnext]])
+          pcall(function () vim.cmd([[bnext]]) end)
           return
         end
 
@@ -76,7 +76,7 @@ in
 
         -- Avoid getting stuck on an unlisted buffer.
         if not buflisted and #windows <= 1 then
-          pcall(vim.cmd, [[bprev]])
+          pcall(function () vim.cmd([[bprev]]) end)
           return
         end
 
@@ -89,57 +89,60 @@ in
       -- typically created in new windows).
       local delete = function ()
         local current_buffer = vim.api.nvim_get_current_buf()
-        local buflisted = vim.api.nvim_buf_get_option(current_buffer, "buflisted")
-        local filetype = vim.api.nvim_buf_get_option(current_buffer, "filetype")
 
-        local buffers = vim.tbl_filter(function (buffer)
-          return vim.api.nvim_buf_is_valid(buffer)
-        end, vim.api.nvim_list_bufs())
+        vim.schedule(function ()
+          local buflisted = vim.api.nvim_buf_get_option(current_buffer, "buflisted")
+          local filetype = vim.api.nvim_buf_get_option(current_buffer, "filetype")
 
-        local listed_buffers = vim.tbl_filter(function (buffer)
-          return vim.api.nvim_buf_get_option(buffer, "buflisted")
-        end, buffers)
+          local buffers = vim.tbl_filter(function (buffer)
+            return vim.api.nvim_buf_is_valid(buffer)
+          end, vim.api.nvim_list_bufs())
 
-        local windows = vim.tbl_filter(function (window)
-          return vim.api.nvim_win_is_valid(window)
-        end, vim.api.nvim_list_wins())
+          local listed_buffers = vim.tbl_filter(function (buffer)
+            return vim.api.nvim_buf_get_option(buffer, "buflisted")
+          end, buffers)
 
-        if filetype == placeholder then
-          return
-        end
+          local windows = vim.tbl_filter(function (window)
+            return vim.api.nvim_win_is_valid(window)
+          end, vim.api.nvim_list_wins())
 
-        -- If the buffer is unlisted (e.g. help, quickfix, tree) and is acting like
-        -- a sidebar, then close its window before deleting the buffer.
-        if not buflisted and #windows > 1 then
-          vim.api.nvim_win_close(0, {})
-        end
-
-        -- Find a replacement buffer to swap in for the buffer being deleted.
-        local replacement_buffer = current_buffer
-        for index, buffer in ipairs(listed_buffers) do
-          if buffer == current_buffer then
-            replacement_buffer = listed_buffers[index % #listed_buffers + 1]
-            break
+          if filetype == placeholder then
+            return
           end
-        end
 
-        -- If a suitable buffer was not found, then create an empty one.
-        if replacement_buffer == current_buffer then
-          replacement_buffer = vim.api.nvim_create_buf(false, false)
-          vim.api.nvim_buf_set_option(replacement_buffer, "filetype", placeholder)
-          vim.api.nvim_buf_set_option(replacement_buffer, "modifiable", false)
-        end
-
-        -- Perform the replacement buffer swap.
-        for _, window in ipairs(windows) do
-          if vim.api.nvim_win_is_valid(window)
-            and vim.api.nvim_win_get_buf(window) == current_buffer then
-            vim.api.nvim_win_set_buf(window, replacement_buffer)
+          -- If the buffer is unlisted (e.g. help, quickfix, tree) and is acting like
+          -- a sidebar, then close its window before deleting the buffer.
+          if not buflisted and #windows > 1 then
+            vim.api.nvim_win_close(0, {})
           end
-        end
 
-        -- Delete the buffer with confirmation for any unsaved changes.
-        pcall(vim.cmd, string.format([[confirm bdelete %d]], current_buffer))
+          -- Find a replacement buffer to swap in for the buffer being deleted.
+          local replacement_buffer = current_buffer
+          for index, buffer in ipairs(listed_buffers) do
+            if buffer == current_buffer then
+              replacement_buffer = listed_buffers[index % #listed_buffers + 1]
+              break
+            end
+          end
+
+          -- If a suitable buffer was not found, then create an empty one.
+          if replacement_buffer == current_buffer then
+            replacement_buffer = vim.api.nvim_create_buf(false, false)
+            vim.api.nvim_buf_set_option(replacement_buffer, "filetype", placeholder)
+            vim.api.nvim_buf_set_option(replacement_buffer, "modifiable", false)
+          end
+
+          -- Perform the replacement buffer swap.
+          for _, window in ipairs(windows) do
+            if vim.api.nvim_win_is_valid(window)
+              and vim.api.nvim_win_get_buf(window) == current_buffer then
+              vim.api.nvim_win_set_buf(window, replacement_buffer)
+            end
+          end
+
+          -- Delete the buffer with confirmation for any unsaved changes.
+          pcall(function () vim.cmd(string.format([[confirm bdelete %d]], current_buffer)) end)
+        end)
       end
 
       -- Create a new buffer with <C-n>.
