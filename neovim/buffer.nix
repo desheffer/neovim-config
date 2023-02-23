@@ -145,6 +145,24 @@ in
         end)
       end
 
+      local quit = function ()
+        vim.schedule(function ()
+          local buffers = vim.tbl_filter(function (buffer)
+            return vim.api.nvim_buf_is_valid(buffer)
+          end, vim.api.nvim_list_bufs())
+
+          -- Abort if any buffer has unsaved changes.
+          for _, buffer in ipairs(buffers) do
+            if vim.api.nvim_buf_get_option(buffer, "modified") then
+              print("No write since last change")
+              return
+            end
+          end
+
+          vim.cmd([[qall]])
+        end)
+      end
+
       -- Create a new buffer with <C-n>.
       vim.keymap.set("n", "<C-n>", function () vim.cmd([[enew]]) end)
 
@@ -163,7 +181,7 @@ in
       vim.keymap.set("n", "<C-c>", delete)
 
       -- Quit Neovim with <C-q>.
-      vim.keymap.set("n", "<C-q>", function () vim.cmd([[qall]]) end)
+      vim.keymap.set("n", "<C-q>", quit)
     '';
   };
 }
