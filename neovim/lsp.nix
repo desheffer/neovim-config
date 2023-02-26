@@ -26,6 +26,10 @@ in
         name = "nvim-lspconfig";
         src = inputs.nvim-lspconfig;
       })
+      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+        name = "null-ls-nvim";
+        src = inputs.null-ls-nvim;
+      })
     ];
 
     extraPackages = with pkgs'; with nodePackages; [
@@ -42,6 +46,17 @@ in
       vscode-html-languageserver-bin
       vscode-json-languageserver-bin
       yaml-language-server
+
+      # Extras for null-ls:
+      actionlint
+      beautysh
+      black
+      isort
+      jq
+      nixpkgs-fmt
+      pylint
+      shellcheck
+      statix
     ];
 
     config = ''
@@ -126,6 +141,22 @@ in
 
       lspconfig.yamlls.setup({
         capabilities = capabilities,
+      })
+
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.code_actions.shellcheck,
+          null_ls.builtins.code_actions.statix,
+          null_ls.builtins.diagnostics.actionlint,
+          null_ls.builtins.diagnostics.pylint,
+          null_ls.builtins.diagnostics.statix,
+          null_ls.builtins.formatting.beautysh,
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.isort,
+          null_ls.builtins.formatting.jq,
+          null_ls.builtins.formatting.nixpkgs_fmt,
+        }
       })
 
       vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticSignError"})

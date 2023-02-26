@@ -25,6 +25,7 @@
     luasnip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
     noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
     nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
+    null-ls-nvim = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
     nvim-hlslens = { url = "github:kevinhwang91/nvim-hlslens"; flake = false; };
