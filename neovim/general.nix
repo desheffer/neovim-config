@@ -15,6 +15,11 @@ in
   options.programs.neovim-config.general = { };
 
   config.programs.neovim-config = {
+    extraPackages = with pkgs'; [
+      curl
+      python3
+    ];
+
     config = ''
       -- Disable mouse support.
       vim.opt.mouse = ""

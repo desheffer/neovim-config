@@ -24,6 +24,10 @@ in
       })
     ];
 
+    extraPackages = with pkgs'; [
+      gcc
+    ];
+
     config = ''
       require("nvim-treesitter.configs").setup({
         highlight = {

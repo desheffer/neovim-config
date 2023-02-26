@@ -32,6 +32,7 @@ in
 
     extraPackages = with pkgs'; [
       fd
+      ripgrep
     ];
 
     config = ''
