@@ -1,4 +1,4 @@
-inputs@{ ... }:
+inputs:
 
 {
   mkNeovim = import ../pkgs/mkNeovim.nix inputs;

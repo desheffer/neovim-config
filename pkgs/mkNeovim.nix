@@ -1,4 +1,4 @@
-inputs@{ ... }:
+inputs:
 
 { system, config ? { }, ... }:
 

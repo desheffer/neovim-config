@@ -48,7 +48,7 @@
     vim-unimpaired = { url = "github:tpope/vim-unimpaired"; flake = false; };
   };
 
-  outputs = inputs@{ ... }:
+  outputs = inputs:
     {
       # Modules for use in other flakes:
       hmModules.neovim = import ./modules/home-manager.nix inputs;
