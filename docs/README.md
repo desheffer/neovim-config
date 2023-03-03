@@ -4,7 +4,7 @@ This repository contains my Neovim configuration as a Nix flake.
 
 ## 🏃 Quick start
 
-Install [Nix][nix-download] and run the following:
+Install [Nix][nix-installer] and run the following:
 
 ```sh
 nix run github:desheffer/neovim-config
@@ -42,4 +42,4 @@ Then, add the following to your Home Manager configuration:
 ]
 ```
 
-[nix-download]: https://nixos.org/download.html
+[nix-installer]: https://github.com/DeterminateSystems/nix-installer
