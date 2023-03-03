@@ -23,14 +23,11 @@
     indent-blankline-nvim = { url = "github:lukas-reineke/indent-blankline.nvim"; flake = false; };
     lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
     luasnip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
-    noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
-    nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
     null-ls-nvim = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
     nvim-hlslens = { url = "github:kevinhwang91/nvim-hlslens"; flake = false; };
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
-    nvim-notify = { url = "github:rcarriga/nvim-notify"; flake = false; };
     nvim-tree-lua = { url = "github:nvim-tree/nvim-tree.lua"; flake = false; };
     nvim-treesitter-context = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
     nvim-web-devicons = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };

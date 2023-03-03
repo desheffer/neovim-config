@@ -18,7 +18,6 @@ with lib;
     (import ./git.nix inputs)
     (import ./lsp.nix inputs)
     (import ./navigation.nix inputs)
-    (import ./notice.nix inputs)
     (import ./register.nix inputs)
     (import ./session.nix inputs)
     (import ./status.nix inputs)
