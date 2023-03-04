@@ -46,6 +46,48 @@ in
       default = "";
     };
 
+    mappings =
+      let
+        mappingOpts = {
+          options = {
+            lhs = mkOption {
+              type = types.str;
+              description = "Sets the left-hand-side of the mapping.";
+              default = null;
+            };
+
+            name = mkOption {
+              type = types.str;
+              description = "Sets the name of the mapping or mapping group.";
+              default = null;
+            };
+
+            rhs = mkOption {
+              type = types.nullOr types.str;
+              description = "Sets the right-hand-side of the mapping.";
+              default = null;
+            };
+
+            lua = mkOption {
+              type = types.nullOr types.str;
+              description = "Sets the right-hand-side of the mapping as Lua code.";
+              default = null;
+            };
+
+            mode = mkOption {
+              type = types.str;
+              description = "Sets the mode short-name.";
+              default = "n";
+            };
+          };
+        };
+      in
+      mkOption {
+        type = types.listOf (types.submodule mappingOpts);
+        description = "Sets the available key mappings.";
+        default = { };
+      };
+
     plugins = mkOption {
       type = types.listOf types.package;
       description = "Plugins to load when Neovim is started.";

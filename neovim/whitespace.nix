@@ -39,7 +39,7 @@ in
         end,
       })
 
-      -- Preserve selection on indent.
+      -- Override line shift to preserve selection.
       vim.keymap.set("v", "<", [[<gv]])
       vim.keymap.set("v", ">", [[>gv]])
     '';

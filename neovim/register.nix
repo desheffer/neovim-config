@@ -29,14 +29,17 @@ in
         },
       });
 
-      -- Make Y yank to end of line.
-      vim.keymap.set("n", "Y", [[y$]])
-
-      -- Prevent p from replacing the register by copying the pasted text.
+      -- Override put to avoid replacing the register value.
       vim.keymap.set("v", "p", [[pgvy]])
-
-      -- Copy to system clipboard with <Leader>y.
-      vim.keymap.set("v", "<Leader>y", [["+y]])
     '';
+
+    mappings = [
+      {
+        lhs = "<Leader>y";
+        name = "Copy to system clipboard";
+        rhs = ''"+y'';
+        mode = "v";
+      }
+    ];
   };
 }

@@ -97,9 +97,6 @@ in
       -- Split windows below and to the right.
       vim.opt.splitbelow = true
       vim.opt.splitright = true
-
-      -- Disable ex mode.
-      vim.keymap.set("n", "Q", [[]])
     '';
   };
 }

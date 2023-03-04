@@ -7,6 +7,7 @@ with lib;
 {
   imports = [
     (import ./neovim.nix inputs)
+    (import ./whichkey.nix inputs)
 
     (import ./buffer.nix inputs)
     (import ./colorscheme.nix inputs)

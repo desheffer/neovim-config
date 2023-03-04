@@ -50,9 +50,20 @@ in
       require("Comment").setup()
 
       require("nvim-autopairs").setup({})
-
-      -- Invoke EasyAlign with ga{char}.
-      vim.keymap.set({"n", "x"}, "ga", [[<Plug>(EasyAlign)]])
     '';
+
+    mappings = [
+      {
+        lhs = "ga";
+        name = "Align character";
+        rhs = ''<Plug>(EasyAlign)'';
+      }
+      {
+        lhs = "ga";
+        name = "Align character";
+        rhs = ''<Plug>(EasyAlign)'';
+        mode = "x";
+      }
+    ];
   };
 }

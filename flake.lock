@@ -522,7 +522,8 @@
         "vim-signature": "vim-signature",
         "vim-surround": "vim-surround",
         "vim-tmux-navigator": "vim-tmux-navigator",
-        "vim-unimpaired": "vim-unimpaired"
+        "vim-unimpaired": "vim-unimpaired",
+        "which-key-nvim": "which-key-nvim"
       }
     },
     "telescope-nvim": {
@@ -682,6 +683,22 @@
       "original": {
         "owner": "tpope",
         "repo": "vim-unimpaired",
+        "type": "github"
+      }
+    },
+    "which-key-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677739890,
+        "narHash": "sha256-4VY9sOKZe2w6cOrYINJIvwDDXx1zkj1xCgHnceSxyZU=",
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "rev": "fb027738340502b556c3f43051f113bcaa7e8e63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "which-key.nvim",
         "type": "github"
       }
     }

@@ -51,7 +51,7 @@ in
 
       local placeholder = "placeholder"
 
-      local next = function ()
+      local buffer_next = function ()
         local buflisted = vim.api.nvim_buf_get_option(0, "buflisted")
 
         local windows = vim.tbl_filter(function (window)
@@ -67,7 +67,7 @@ in
         require("bufferline").cycle(1)
       end
 
-      local prev = function ()
+      local buffer_prev = function ()
         local buflisted = vim.api.nvim_buf_get_option(0, "buflisted")
 
         local windows = vim.tbl_filter(function (window)
@@ -87,7 +87,7 @@ in
       -- buffer to preserve the window layout. If the buffer is unlisted, then close
       -- its window before deleting it (which mirrors how unlisted buffers are
       -- typically created in new windows).
-      local delete = function ()
+      local buffer_delete = function ()
         local current_buffer = vim.api.nvim_get_current_buf()
 
         vim.schedule(function ()
@@ -162,26 +162,49 @@ in
           vim.cmd([[qall]])
         end)
       end
-
-      -- Create a new buffer with <C-n>.
-      vim.keymap.set("n", "<C-n>", function () vim.cmd([[enew]]) end)
-
-      -- Cycle buffers with <C-PageDown> and <C-PageUp> (for consistency with GUI tabs).
-      vim.keymap.set("n", "<C-PageDown>", next)
-      vim.keymap.set("n", "<C-PageUp>", prev)
-
-      -- Cycle buffers with gt and gT (for consistency with vanilla Vim tabs).
-      vim.keymap.set("n", "gt", next)
-      vim.keymap.set("n", "gT", prev)
-
-      -- Save a buffer with <C-s>.
-      vim.keymap.set({"i", "n"}, "<C-s>", function () vim.cmd([[write]]) end)
-
-      -- Close a buffer with <C-c>.
-      vim.keymap.set("n", "<C-c>", delete)
-
-      -- Quit Neovim with <C-q>.
-      vim.keymap.set("n", "<C-q>", quit)
     '';
+
+    mappings = [
+      {
+        lhs = "<C-n>";
+        name = "Create a new buffer";
+        lua = ''vim.cmd([[enew]])'';
+      }
+      {
+        lhs = "<C-PageDown>";
+        name = "Next buffer";
+        lua = ''buffer_next()'';
+      }
+      {
+        lhs = "<C-PageUp>";
+        name = "Previous buffer";
+        lua = ''buffer_prev()'';
+      }
+      {
+        lhs = "gt";
+        name = "Next buffer";
+        lua = ''buffer_next()'';
+      }
+      {
+        lhs = "gT";
+        name = "Previous buffer";
+        lua = ''buffer_prev()'';
+      }
+      {
+        lhs = "<C-s>";
+        name = "Write buffer";
+        lua = ''vim.cmd([[write]])'';
+      }
+      {
+        lhs = "<C-c>";
+        name = "Delete buffer";
+        lua = ''buffer_delete()'';
+      }
+      {
+        lhs = "<C-q>";
+        name = "Quit Neovim";
+        lua = ''quit()'';
+      }
+    ];
   };
 }

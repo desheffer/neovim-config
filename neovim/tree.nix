@@ -43,15 +43,18 @@ in
           width = 50,
         },
       })
-
-      local focus = function ()
-        local tree = require("nvim-tree")
-        tree.find_file(true)
-        tree.focus()
-      end
-
-      -- Focus the file tree with <Leader>n.
-      vim.keymap.set("n", "<Leader>n", focus)
     '';
+
+    mappings = [
+      {
+        lhs = "<Leader>n";
+        name = "Show file tree";
+        lua = ''
+          local tree = require("nvim-tree")
+          tree.find_file(true)
+          tree.focus()
+        '';
+      }
+    ];
   };
 }

@@ -163,23 +163,80 @@ in
       vim.fn.sign_define("DiagnosticSignWarn",  {text = "", texthl = "DiagnosticSignWarn"})
       vim.fn.sign_define("DiagnosticSignInfo",  {text = "", texthl = "DiagnosticSignInfo"})
       vim.fn.sign_define("DiagnosticSignHint",  {text = "", texthl = "DiagnosticSignHint"})
-
-      -- Bind various LSP commands.
-      vim.keymap.set("n", "gd", function () require("telescope.builtin").lsp_definitions({jump_type = "never"}) end)
-      vim.keymap.set("n", "gD", function () vim.lsp.buf.declaration() end)
-      vim.keymap.set("n", "gi", function () require("telescope.builtin").lsp_implementations({jump_type = "never"}) end)
-      vim.keymap.set("n", "gr", function () require("telescope.builtin").lsp_references({jump_type = "never"}) end)
-      vim.keymap.set("n", "K",  function () vim.lsp.buf.hover() end)
-      vim.keymap.set("n", "<Leader>ca", function () vim.lsp.buf.code_action() end)
-      vim.keymap.set("v", "<Leader>ca", function () vim.lsp.buf.code_action() end)
-      vim.keymap.set("n", "<Leader>cf", function () vim.lsp.buf.format({async = true}) end)
-      vim.keymap.set("v", "<Leader>cf", function () vim.lsp.buf.format({async = true}) end)
-      vim.keymap.set("n", "<Leader>cr", function () vim.lsp.buf.rename() end)
-
-      -- Bind various diagnostic commands.
-      vim.keymap.set("n", "[d", function () vim.diagnostic.goto_prev({popup_opts = {focusable = false}}) end)
-      vim.keymap.set("n", "]d", function () vim.diagnostic.goto_next({popup_opts = {focusable = false}}) end)
-      vim.keymap.set("n", "<Leader>cd", function () require("telescope.builtin").diagnostics() end)
     '';
+
+    mappings = [
+      {
+        lhs = "gd";
+        name = "Go to definition";
+        lua = ''require("telescope.builtin").lsp_definitions({jump_type = "never"})'';
+      }
+      {
+        lhs = "gD";
+        name = "Go to declaration";
+        lua = ''vim.lsp.buf.declaration()'';
+      }
+      {
+        lhs = "gi";
+        name = "Go to implementations";
+        lua = ''require("telescope.builtin").lsp_implementations({jump_type = "never"})'';
+      }
+      {
+        lhs = "gr";
+        name = "Go to references";
+        lua = ''require("telescope.builtin").lsp_references({jump_type = "never"})'';
+      }
+      {
+        lhs = "K";
+        name = "Hover";
+        lua = ''vim.lsp.buf.hover()'';
+      }
+      {
+        lhs = "<Leader>c";
+        name = "+code";
+      }
+      {
+        lhs = "<Leader>ca";
+        name = "Code action";
+        lua = ''vim.lsp.buf.code_action()'';
+      }
+      {
+        lhs = "<Leader>ca";
+        name = "Code action";
+        lua = ''vim.lsp.buf.code_action()'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>cf";
+        name = "Code format";
+        lua = ''vim.lsp.buf.format({async = true})'';
+      }
+      {
+        lhs = "<Leader>cf";
+        name = "Code format";
+        lua = ''vim.lsp.buf.format({async = true})'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>cr";
+        name = "Rename";
+        lua = ''vim.lsp.buf.rename()'';
+      }
+      {
+        lhs = "]d";
+        name = "Next diagnostic";
+        lua = ''vim.diagnostic.goto_next({popup_opts = {focusable = false}})'';
+      }
+      {
+        lhs = "[d";
+        name = "Previous diagnostic";
+        lua = ''vim.diagnostic.goto_prev({popup_opts = {focusable = false}})'';
+      }
+      {
+        lhs = "<Leader>cd";
+        name = "Diagnostics";
+        lua = ''require("telescope.builtin").diagnostics()'';
+      }
+    ];
   };
 }
