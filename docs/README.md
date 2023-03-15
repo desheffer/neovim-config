@@ -35,7 +35,7 @@ Then, add the following to your Home Manager configuration:
 
 ```nix
 [
-  neovim-config.hmModules.neovim
+  neovim-config.homeManagerModules.neovim
   {
     programs.neovim-config.enable = true;
   }

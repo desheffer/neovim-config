@@ -49,7 +49,7 @@
   outputs = inputs:
     {
       # Modules for use in other flakes:
-      hmModules.neovim = import ./modules/home-manager.nix inputs;
+      homeManagerModules.neovim = import ./modules/home-manager.nix inputs;
 
       # Packages provided by `nix run`:
       packages = import ./pkgs/packages.nix inputs;
