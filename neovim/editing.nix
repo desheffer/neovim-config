@@ -21,10 +21,6 @@ in
         src = inputs.comment-nvim;
       })
       (pkgs'.vimUtils.buildVimPluginFrom2Nix {
-        name = "nvim-autopairs";
-        src = inputs.nvim-autopairs;
-      })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
         name = "vim-argumentative";
         src = inputs.vim-argumentative;
       })
@@ -48,8 +44,6 @@ in
 
     config = ''
       require("Comment").setup()
-
-      require("nvim-autopairs").setup({})
     '';
 
     mappings = [
