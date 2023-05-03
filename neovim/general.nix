@@ -74,6 +74,9 @@ in
           end,
       })
 
+      -- Wrap lines at the word boundary.
+      vim.opt.linebreak = true
+
       -- Pad the cursor with 5 lines.
       vim.opt.scrolloff = 5
 
