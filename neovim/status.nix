@@ -36,7 +36,7 @@ in
         },
         sections = {
           lualine_b = {
-            require("auto-session-library").current_session_name,
+            require('auto-session.lib').current_session_name,
             "branch",
             "diff",
             {
