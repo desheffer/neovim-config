@@ -15,6 +15,10 @@ in
   options.programs.neovim-config.git = { };
 
   config.programs.neovim-config = {
+    extraPackages = with pkgs'; [
+      git
+    ];
+
     plugins = [
       (pkgs'.vimUtils.buildVimPluginFrom2Nix {
         name = "gitsigns-nvim";
