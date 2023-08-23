@@ -34,15 +34,15 @@ in
         update_focused_file = {
           enable = true,
         },
-        on_attach = function ()
+        on_attach = function (bufnr)
           local api = require("nvim-tree.api")
 
-          vim.keymap.set("n", "<CR>",  api.node.open.edit)
-          vim.keymap.set("n", "<Esc>", api.tree.close)
-          vim.keymap.set("n", "a",     api.fs.create)
-          vim.keymap.set("n", "d",     api.fs.remove)
-          vim.keymap.set("n", "r",     api.fs.rename)
-          vim.keymap.set("n", "R",     api.tree.reload)
+          vim.keymap.set("n", "<CR>",  api.node.open.edit, {buffer = bufnr})
+          vim.keymap.set("n", "<Esc>", api.tree.close,     {buffer = bufnr})
+          vim.keymap.set("n", "a",     api.fs.create,      {buffer = bufnr})
+          vim.keymap.set("n", "d",     api.fs.remove,      {buffer = bufnr})
+          vim.keymap.set("n", "r",     api.fs.rename,      {buffer = bufnr})
+          vim.keymap.set("n", "R",     api.tree.reload,    {buffer = bufnr})
         end,
         view = {
           width = 50,
