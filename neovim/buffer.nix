@@ -120,7 +120,13 @@ in
           local replacement_buffer = current_buffer
           for index, buffer in ipairs(listed_buffers) do
             if buffer == current_buffer then
-              replacement_buffer = listed_buffers[index % #listed_buffers + 1]
+              -- If this is the first buffer, then pull from the right. Otherwise, pull from
+              -- the left.
+              if index == 1 then
+                replacement_buffer = listed_buffers[index % #listed_buffers + 1]
+              else
+                replacement_buffer = listed_buffers[index - 1]
+              end
               break
             end
           end
