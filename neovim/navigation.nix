@@ -54,6 +54,10 @@ in
       vim.keymap.set("n", "g<Down>", [[j]])
       vim.keymap.set("n", "g<Up>",   [[k]])
 
+      -- Override C-d/C-u to also center vertically.
+      vim.keymap.set("n", "<C-d>", [[<C-d>zz]])
+      vim.keymap.set("n", "<C-u>", [[<C-u>zz]])
+
       -- Override search navigation.
       vim.keymap.set("",  "*",  [[<Plug>(asterisk-z*)<Cmd>lua require("hlslens").start()<CR>]])
       vim.keymap.set("",  "#",  [[<Plug>(asterisk-z#)<Cmd>lua require("hlslens").start()<CR>]])
