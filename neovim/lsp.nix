@@ -33,18 +33,47 @@ in
     ];
 
     extraPackages = with pkgs'; with nodePackages; [
+      # Bash:
       bash-language-server
+
+      # C/C++:
       ccls
-      dockerfile-language-server-nodejs
-      gopls
-      intelephense
-      jdt-language-server
-      pyright
-      rnix-lsp
-      sumneko-lua-language-server
+
+      # CSS:
       vscode-css-languageserver-bin
+
+      # Docker:
+      dockerfile-language-server-nodejs
+
+      # Go:
+      gopls
+
+      # HTML:
       vscode-html-languageserver-bin
+
+      # Java:
+      jdt-language-server
+
+      # JSON:
       vscode-json-languageserver-bin
+
+      # Lua:
+      sumneko-lua-language-server
+
+      # Nix:
+      rnix-lsp
+
+      # PHP:
+      intelephense
+
+      # Python:
+      pyright
+
+      # Rust:
+      rust-analyzer
+      cargo
+
+      # YAML:
       yaml-language-server
 
       # Extras for null-ls:
@@ -136,6 +165,10 @@ in
       })
 
       lspconfig.rnix.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.rust_analyzer.setup({
         capabilities = capabilities,
       })
 
