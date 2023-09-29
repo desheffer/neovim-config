@@ -70,8 +70,9 @@ in
       pyright
 
       # Rust:
-      rust-analyzer
       cargo
+      rust-analyzer
+      rustc
 
       # YAML:
       yaml-language-server
