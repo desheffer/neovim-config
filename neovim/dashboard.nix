@@ -16,7 +16,7 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "alpha-nvim";
         src = inputs.alpha-nvim;
       })

@@ -16,18 +16,14 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "indent-blankline-nvim";
         src = inputs.indent-blankline-nvim;
       })
     ];
 
     config = ''
-      -- Set indentation marker character.
-      vim.g.indent_blankline_char = "▏"
-
-      -- Hide indentation marker for certain file types.
-      vim.g.indent_blankline_filetype_exclude = {"dashboard", "help", "lsp-installer", "NvimTree"}
+      require("ibl").setup()
 
       -- Remove trailing whitespace on save.
       vim.api.nvim_create_autocmd("BufWritePre", {

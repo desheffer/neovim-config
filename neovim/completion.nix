@@ -16,27 +16,27 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "cmp-buffer";
         src = inputs.cmp-buffer;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "cmp-nvim-lsp";
         src = inputs.cmp-nvim-lsp;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "cmp_luasnip";
         src = inputs.cmp_luasnip;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "friendly-snippets";
         src = inputs.friendly-snippets;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "luasnip";
         src = inputs.luasnip;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-cmp";
         src = inputs.nvim-cmp;
       })

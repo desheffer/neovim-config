@@ -16,11 +16,11 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "bufferline-nvim";
         src = inputs.bufferline-nvim;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-web-devicons";
         src = inputs.nvim-web-devicons;
       })

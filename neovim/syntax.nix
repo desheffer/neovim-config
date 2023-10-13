@@ -18,7 +18,7 @@ in
     plugins = [
       pkgs'.vimPlugins.nvim-treesitter.withAllGrammars
 
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-treesitter-context";
         src = inputs.nvim-treesitter-context;
       })

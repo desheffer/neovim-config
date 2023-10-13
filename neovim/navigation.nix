@@ -16,19 +16,19 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "hop-nvim";
         src = inputs.hop-nvim;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-hlslens";
         src = inputs.nvim-hlslens;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "vim-asterisk";
         src = inputs.vim-asterisk;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "vim-signature";
         src = inputs.vim-signature;
       })

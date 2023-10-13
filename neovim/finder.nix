@@ -16,15 +16,15 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "plenary-nvim";
         src = inputs.plenary-nvim;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "telescope-nvim";
         src = inputs.telescope-nvim;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "telescope-ui-select-nvim";
         src = inputs.telescope-ui-select-nvim;
       })

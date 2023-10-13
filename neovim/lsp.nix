@@ -22,11 +22,11 @@ in
 
   config.programs.neovim-config = mkIf cfg.enable {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-lspconfig";
         src = inputs.nvim-lspconfig;
       })
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "null-ls-nvim";
         src = inputs.null-ls-nvim;
       })

@@ -29,7 +29,7 @@ in
 
   config.programs.neovim-config = {
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "which-key-nvim";
         src = inputs.which-key-nvim;
       })

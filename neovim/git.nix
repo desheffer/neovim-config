@@ -20,7 +20,7 @@ in
     ];
 
     plugins = [
-      (pkgs'.vimUtils.buildVimPluginFrom2Nix {
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "gitsigns-nvim";
         src = inputs.gitsigns-nvim;
       })
