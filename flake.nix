@@ -34,6 +34,7 @@
     registers-nvim = { url = "github:tversteeg/registers.nvim"; flake = false; };
     telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
     telescope-ui-select-nvim = { url = "github:nvim-telescope/telescope-ui-select.nvim"; flake = false; };
+    trouble-nvim = { url = "github:folke/trouble.nvim"; flake = false; };
     vim-argumentative = { url = "github:PeterRincker/vim-argumentative"; flake = false; };
     vim-asterisk = { url = "github:haya14busa/vim-asterisk"; flake = false; };
     vim-easy-align = { url = "github:junegunn/vim-easy-align"; flake = false; };

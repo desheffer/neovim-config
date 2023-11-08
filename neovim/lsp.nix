@@ -30,6 +30,10 @@ in
         name = "null-ls-nvim";
         src = inputs.null-ls-nvim;
       })
+      (pkgs'.vimUtils.buildVimPlugin {
+        name = "trouble-nvim";
+        src = inputs.trouble-nvim;
+      })
     ];
 
     extraPackages = with pkgs'; with nodePackages; [
@@ -269,7 +273,7 @@ in
       {
         lhs = "<Leader>cd";
         name = "Diagnostics";
-        lua = ''require("telescope.builtin").diagnostics()'';
+        lua = ''require("trouble").open()'';
       }
     ];
   };
