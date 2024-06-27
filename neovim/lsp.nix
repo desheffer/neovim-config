@@ -64,9 +64,6 @@ in
       # Lua:
       sumneko-lua-language-server
 
-      # Nix:
-      rnix-lsp
-
       # PHP:
       intelephense
 
@@ -166,10 +163,6 @@ in
       })
 
       lspconfig.pyright.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.rnix.setup({
         capabilities = capabilities,
       })
 
