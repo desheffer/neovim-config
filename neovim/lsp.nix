@@ -27,8 +27,8 @@ in
         src = inputs.nvim-lspconfig;
       })
       (pkgs'.vimUtils.buildVimPlugin {
-        name = "null-ls-nvim";
-        src = inputs.null-ls-nvim;
+        name = "efmls-configs-nvim";
+        src = inputs.efmls-configs-nvim;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "trouble-nvim";
@@ -37,8 +37,10 @@ in
     ];
 
     extraPackages = with pkgs'; with nodePackages; [
-      # Bash:
+      # Bash/Sh:
       bash-language-server
+      beautysh
+      shellcheck
 
       # C/C++:
       ccls
@@ -60,15 +62,23 @@ in
 
       # JSON:
       vscode-json-languageserver-bin
+      jq
 
       # Lua:
       sumneko-lua-language-server
+
+      # Nix:
+      nixfmt-rfc-style
+      statix
 
       # PHP:
       intelephense
 
       # Python:
       pyright
+      black
+      isort
+      pylint
 
       # Rust:
       cargo
@@ -77,17 +87,11 @@ in
 
       # YAML:
       yaml-language-server
-
-      # Extras for null-ls:
       actionlint
-      beautysh
-      black
-      isort
-      jq
-      nixpkgs-fmt
-      pylint
-      shellcheck
-      statix
+      yq
+
+      # General purpose:
+      efm-langserver
     ];
 
     config = ''
@@ -116,6 +120,45 @@ in
 
       lspconfig.dockerls.setup({
         capabilities = capabilities,
+      })
+
+      lspconfig.efm.setup({
+        init_options = {
+          codeAction = true,
+          completion = true,
+          documentFormatting = true,
+          documentRangeFormatting = true,
+          documentSymbol = true,
+          hover = true,
+        },
+        settings = {
+          rootMarkers = {
+            ".git/",
+          },
+          languages = {
+            json = {
+              require("efmls-configs.formatters.jq"),
+              require("efmls-configs.linters.jq"),
+            },
+            nix = {
+              require("efmls-configs.formatters.nixfmt"),
+              require("efmls-configs.linters.statix"),
+            },
+            python = {
+              require("efmls-configs.formatters.black"),
+              require("efmls-configs.formatters.isort"),
+              require("efmls-configs.linters.pylint"),
+            },
+            sh = {
+              require("efmls-configs.formatters.beautysh"),
+              require("efmls-configs.linters.shellcheck"),
+            },
+            yaml = {
+              require("efmls-configs.formatters.yq"),
+              require("efmls-configs.linters.actionlint"),
+            },
+          }
+        },
       })
 
       lspconfig.gopls.setup({
@@ -172,22 +215,6 @@ in
 
       lspconfig.yamlls.setup({
         capabilities = capabilities,
-      })
-
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.code_actions.shellcheck,
-          null_ls.builtins.code_actions.statix,
-          null_ls.builtins.diagnostics.actionlint,
-          null_ls.builtins.diagnostics.pylint,
-          null_ls.builtins.diagnostics.statix,
-          null_ls.builtins.formatting.beautysh,
-          null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.isort,
-          null_ls.builtins.formatting.jq,
-          null_ls.builtins.formatting.nixpkgs_fmt,
-        }
       })
 
       vim.fn.sign_define("DiagnosticSignError", {text = "󰀩", texthl = "DiagnosticSignError"})
