@@ -35,17 +35,17 @@ in
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "gruvbox-material",
         callback = function ()
-          -- Tone down the search highlighting.
-          vim.cmd([[highlight! IncSearch cterm=reverse gui=reverse guifg=#fe811b guibg=#29292]])
-          vim.cmd([[highlight! Search ctermfg=0 ctermbg=11 gui=reverse guifg=#fabd2e guibg=#29292]])
+          -- Tone down search highlighting.
+          vim.cmd([[highlight! IncSearch ctermfg=235 ctermbg=208 guifg=#282828 guibg=#fe8019]])
+          vim.cmd([[highlight! Search ctermfg=235 ctermbg=214 guifg=#282828 guibg=#fabd2f]])
 
-          -- Darken the NvimTree window.
-          vim.cmd([[highlight! NvimTreeNormal ctermfg=223 ctermbg=235 guifg=#ebdbb2 guibg=#1e1e1e]])
-          vim.cmd([[highlight! NvimTreeEndOfBuffer ctermfg=239 ctermbg=235 guifg=#1e1e1e guibg=#1e1e1e]])
-          vim.cmd([[highlight! NvimTreeVertSplit ctermfg=239 guifg=#1e1e1e guibg=#1e1e1e]])
-
-          -- Make matching braces a little more obvious.
+          -- Make matching braces more obvious.
           vim.cmd([[highlight! MatchParen cterm=bold gui=bold]])
+
+          -- Hide the NvimTree separator.
+          vim.cmd([[highlight! link NvimTreeWinSeparator NvimTreeEndOfBuffer]])
+          vim.cmd([[highlight! link NvimTreeStatusLine NvimTreeEndOfBuffer]])
+          vim.cmd([[highlight! link NvimTreeStatusLineNC NvimTreeEndOfBuffer]])
         end,
       })
 

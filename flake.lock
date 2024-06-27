@@ -199,11 +199,11 @@
     "gruvbox-material": {
       "flake": false,
       "locked": {
-        "lastModified": 1696365323,
-        "narHash": "sha256-JorYzhlkCTpbpAstINeu46sYYtDy24/4hO72PUjCh2o=",
+        "lastModified": 1718997242,
+        "narHash": "sha256-fZInzV3cTAu94/j7hkeWxQhJbtFeuvAjeWrSG0UVv1A=",
         "owner": "sainnhe",
         "repo": "gruvbox-material",
-        "rev": "c75bf1e96fdc33b8b3b613e5172a0acdba198fca",
+        "rev": "607fac66a5a4418dd9fe1c8fe7d1368099f5bf96",
         "type": "github"
       },
       "original": {
