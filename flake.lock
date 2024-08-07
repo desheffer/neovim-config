@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "CopilotChat-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722914123,
+        "narHash": "sha256-rIWG88yU7AUgvjMqH4mSVaOFTFburPJFNYa1e/3UNKg=",
+        "owner": "CopilotC-Nvim",
+        "repo": "CopilotChat.nvim",
+        "rev": "cfdf371cec954fccf5410315884e110d214d38fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CopilotC-Nvim",
+        "repo": "CopilotChat.nvim",
+        "type": "github"
+      }
+    },
     "FTerm-nvim": {
       "flake": false,
       "locked": {
@@ -125,6 +141,22 @@
       "original": {
         "owner": "numToStr",
         "repo": "Comment.nvim",
+        "type": "github"
+      }
+    },
+    "copilot-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718412968,
+        "narHash": "sha256-HC1QZlqEg+RBz/8kjLadafc06UoMAjhh0UO/BWQGMY8=",
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "rev": "86537b286f18783f8b67bccd78a4ef4345679625",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
         "type": "github"
       }
     },
@@ -420,6 +452,7 @@
     },
     "root": {
       "inputs": {
+        "CopilotChat-nvim": "CopilotChat-nvim",
         "FTerm-nvim": "FTerm-nvim",
         "alpha-nvim": "alpha-nvim",
         "auto-session": "auto-session",
@@ -428,6 +461,7 @@
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp_luasnip": "cmp_luasnip",
         "comment-nvim": "comment-nvim",
+        "copilot-lua": "copilot-lua",
         "efmls-configs-nvim": "efmls-configs-nvim",
         "flake-utils": "flake-utils",
         "friendly-snippets": "friendly-snippets",
