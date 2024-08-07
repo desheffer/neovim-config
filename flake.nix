@@ -14,6 +14,8 @@
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
     cmp_luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     comment-nvim = { url = "github:numToStr/Comment.nvim"; flake = false; };
+    copilot-lua = { url = "github:zbirenbaum/copilot.lua"; flake = false; };
+    CopilotChat-nvim = { url = "github:CopilotC-Nvim/CopilotChat.nvim"; flake = false; };
     efmls-configs-nvim = { url = "github:creativenull/efmls-configs-nvim"; flake = false; };
     friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };

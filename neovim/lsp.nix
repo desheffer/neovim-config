@@ -34,6 +34,14 @@ in
         name = "trouble-nvim";
         src = inputs.trouble-nvim;
       })
+      (pkgs'.vimUtils.buildVimPlugin {
+        name = "copilot-lua";
+        src = inputs.copilot-lua;
+      })
+      (pkgs'.vimUtils.buildVimPlugin {
+        name = "CopilotChat-nvim";
+        src = inputs.CopilotChat-nvim;
+      })
     ];
 
     extraPackages = with pkgs'; with nodePackages; [
@@ -87,6 +95,9 @@ in
 
       # General purpose:
       efm-langserver
+
+      # Copilot:
+      nodejs
     ];
 
     config = ''
@@ -213,6 +224,8 @@ in
       vim.fn.sign_define("DiagnosticSignWarn",  {text = "󰀦", texthl = "DiagnosticSignWarn"})
       vim.fn.sign_define("DiagnosticSignInfo",  {text = "󰋼", texthl = "DiagnosticSignInfo"})
       vim.fn.sign_define("DiagnosticSignHint",  {text = "󰌵", texthl = "DiagnosticSignHint"})
+
+      require("CopilotChat").setup({})
     '';
 
     mappings = [
@@ -254,6 +267,70 @@ in
         lhs = "<Leader>ca";
         name = "Code action";
         lua = ''vim.lsp.buf.code_action()'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>cc";
+        name = "+copilot";
+      }
+      {
+        lhs = "<Leader>ccc";
+        name = "Copilot chat";
+        lua = ''vim.cmd([[CopilotChat]])'';
+      }
+      {
+        lhs = "<Leader>ccd";
+        name = "Copilot docs";
+        lua = ''vim.cmd([[CopilotChatDocs]])'';
+      }
+      {
+        lhs = "<Leader>ccd";
+        name = "Copilot docs";
+        lua = ''vim.cmd([[CopilotChatDocs]])'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>cce";
+        name = "Copilot explain";
+        lua = ''vim.cmd([[CopilotChatExplain]])'';
+      }
+      {
+        lhs = "<Leader>cce";
+        name = "Copilot explain";
+        lua = ''vim.cmd([[CopilotChatExplain]])'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>ccf";
+        name = "Copilot fix";
+        lua = ''vim.cmd([[CopilotChatFix]])'';
+      }
+      {
+        lhs = "<Leader>ccf";
+        name = "Copilot fix";
+        lua = ''vim.cmd([[CopilotChatFix]])'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>cco";
+        name = "Copilot optimize";
+        lua = ''vim.cmd([[CopilotChatOptimize]])'';
+      }
+      {
+        lhs = "<Leader>cco";
+        name = "Copilot optimize";
+        lua = ''vim.cmd([[CopilotChatOptimize]])'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>ccr";
+        name = "Copilot review";
+        lua = ''vim.cmd([[CopilotChatReview]])'';
+      }
+      {
+        lhs = "<Leader>ccr";
+        name = "Copilot review";
+        lua = ''vim.cmd([[CopilotChatReview]])'';
         mode = "v";
       }
       {
