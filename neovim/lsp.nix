@@ -45,23 +45,16 @@ in
       # C/C++:
       ccls
 
-      # CSS:
-      vscode-css-languageserver-bin
-
       # Docker:
       dockerfile-language-server-nodejs
 
       # Go:
       gopls
 
-      # HTML:
-      vscode-html-languageserver-bin
-
       # Java:
       jdt-language-server
 
       # JSON:
-      vscode-json-languageserver-bin
       jq
 
       # Lua:
@@ -111,11 +104,6 @@ in
             directory = vim.env.HOME .. "/.cache/ccls",
           },
         },
-      })
-
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-        cmd = {"css-languageserver", "--stdio"},
       })
 
       lspconfig.dockerls.setup({
@@ -168,11 +156,6 @@ in
         },
       })
 
-      lspconfig.html.setup({
-        capabilities = capabilities,
-        cmd = {"html-languageserver", "--stdio"},
-      })
-
       lspconfig.intelephense.setup({
         capabilities = capabilities,
         init_options = {
@@ -182,16 +165,6 @@ in
 
       lspconfig.jdtls.setup({
         capabilities = capabilities,
-        cmd = {
-          "jdt-language-server",
-          "-configuration", vim.env.HOME .. "/.cache/jdtls/config",
-          "-data", vim.env.HOME .. "/.cache/jdtls/workspace",
-        },
-      })
-
-      lspconfig.jsonls.setup({
-        capabilities = capabilities,
-        cmd = {"json-languageserver", "--stdio"},
       })
 
       lspconfig.lua_ls.setup({
