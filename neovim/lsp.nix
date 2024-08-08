@@ -50,6 +50,7 @@ in
 
       # Go:
       gopls
+      go
 
       # Java:
       jdt-language-server

@@ -44,6 +44,15 @@ in
         pattern = {"nix"},
         callback = function ()
           vim.bo.shiftwidth = 2
+          vim.bo.tabstop = 2
+        end,
+      })
+
+      -- Use tabs for indentation for certain file types.
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {"go"},
+        callback = function ()
+          vim.bo.expandtab = false
         end,
       })
 
