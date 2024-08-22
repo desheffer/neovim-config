@@ -41,7 +41,7 @@ in
 
       -- Use 2 spaces for indentation for certain file types.
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = {"nix"},
+        pattern = {"java", "nix"},
         callback = function ()
           vim.bo.shiftwidth = 2
           vim.bo.tabstop = 2
