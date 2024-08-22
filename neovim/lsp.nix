@@ -54,6 +54,7 @@ in
 
       # Java:
       jdt-language-server
+      google-java-format
 
       # JSON:
       jq
@@ -124,7 +125,24 @@ in
           rootMarkers = {
             ".git/",
           },
+          -- See the following page for ideas:
+          -- https://github.com/creativenull/efmls-configs-nvim/blob/main/doc/SUPPORTED_LIST.md
           languages = {
+            java = {
+              {
+                formatCommand = require("efmls-configs.fs").executable("google-java-format")
+                  .. " $(echo -n ''${--useless:rowStart} ''${--useless:rowEnd}"
+                  .. " | xargs -n4 -r sh -c 'echo"
+                  .. " --skip-sorting-imports"
+                  .. " --skip-removing-unused-imports"
+                  .. " --skip-reflowing-long-strings"
+                  .. " --skip-javadoc-formatting"
+                  .. " --lines $(($1+1)):$(($3+1))'"
+                  .. ") -",
+                formatStdin = true,
+                rootMarkers = { ".project", "classpath", "pom.xml" },
+              },
+            },
             json = {
               require("efmls-configs.formatters.jq"),
               require("efmls-configs.linters.jq"),
