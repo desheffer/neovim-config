@@ -51,11 +51,11 @@
     "auto-session": {
       "flake": false,
       "locked": {
-        "lastModified": 1718956501,
-        "narHash": "sha256-4uyRXOZykPyBP4kkVcKtsMZZQu1IGag/RAYyIwXoQ5w=",
+        "lastModified": 1724871087,
+        "narHash": "sha256-FyawmoHSlnRdpvE83rBe9NtUy0zJazMy4XlojtP4nkA=",
         "owner": "rmagatti",
         "repo": "auto-session",
-        "rev": "e5ffe230235c7d35c2f33078b7cd927a4fb579c4",
+        "rev": "0e9aa77525b5217e8eacb36007edd3d02bb2a91a",
         "type": "github"
       },
       "original": {
