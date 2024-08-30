@@ -259,6 +259,11 @@ in
         name = "+code";
       }
       {
+        lhs = "<Leader>c";
+        name = "+code";
+        mode = "v";
+      }
+      {
         lhs = "<Leader>ca";
         name = "Code action";
         lua = ''vim.lsp.buf.code_action()'';
@@ -272,6 +277,11 @@ in
       {
         lhs = "<Leader>cc";
         name = "+copilot";
+      }
+      {
+        lhs = "<Leader>cc";
+        name = "+copilot";
+        mode = "v";
       }
       {
         lhs = "<Leader>ccc";
