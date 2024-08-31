@@ -289,6 +289,12 @@ in
         lua = ''vim.cmd([[CopilotChat]])'';
       }
       {
+        lhs = "<Leader>ccc";
+        name = "Copilot chat";
+        lua = ''vim.cmd([[CopilotChat]])'';
+        mode = "v";
+      }
+      {
         lhs = "<Leader>ccd";
         name = "Copilot docs";
         lua = ''vim.cmd([[CopilotChatDocs]])'';
