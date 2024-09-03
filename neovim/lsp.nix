@@ -378,7 +378,7 @@ in
       {
         lhs = "<Leader>cd";
         name = "Diagnostics";
-        lua = ''require("trouble").open()'';
+        lua = ''require("trouble").open("diagnostics")'';
       }
     ];
   };
