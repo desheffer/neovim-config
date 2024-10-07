@@ -1,6 +1,11 @@
 inputs:
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -10,15 +15,19 @@ let
 
   cfg = config.programs.neovim-config.whichkey;
 
-  mapMapping = elem:
-    ''wk.register({ ["${elem.lhs}"] = {'' + (
+  mapMapping =
+    elem:
+    ''wk.register({ ["${elem.lhs}"] = {''
+    + (
       if elem.rhs != null then
         ''[[${elem.rhs}]], [[${elem.name}]]''
       else if elem.lua != null then
         ''function () ${elem.lua} end, [[${elem.name}]]''
       else
         ''name = [[${elem.name}]]''
-    ) + ''}}, {mode = [[${elem.mode}]]})
+    )
+    + ''
+      }}, {mode = [[${elem.mode}]]})
     '';
   concat = foldr (a: b: a + b) "";
   registerMappings = concat (map mapMapping config.programs.neovim-config.mappings);

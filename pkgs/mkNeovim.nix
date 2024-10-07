@@ -1,6 +1,10 @@
 inputs:
 
-{ system, config ? { }, ... }:
+{
+  system,
+  config ? { },
+  ...
+}:
 
 let
   lib = import ../lib inputs;

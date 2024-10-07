@@ -1,6 +1,11 @@
 inputs:
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -24,9 +29,7 @@ in
       })
     ];
 
-    extraPackages = with pkgs'; [
-      gcc
-    ];
+    extraPackages = with pkgs'; [ gcc ];
 
     config = ''
       require("nvim-treesitter.configs").setup({

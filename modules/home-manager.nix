@@ -17,13 +17,7 @@ in
     };
   };
 
-  imports = [
-    (import ../neovim inputs)
-  ];
+  imports = [ (import ../neovim inputs) ];
 
-  config = mkIf cfg.enable {
-    home.packages = [
-      config.programs.neovim-config.finalPackage
-    ];
-  };
+  config = mkIf cfg.enable { home.packages = [ config.programs.neovim-config.finalPackage ]; };
 }

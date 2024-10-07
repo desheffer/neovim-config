@@ -1,11 +1,15 @@
-inputs@{ nixpkgs, flake-utils, treefmt-nix, ... }:
+inputs@{
+  nixpkgs,
+  flake-utils,
+  treefmt-nix,
+  ...
+}:
 
 let
-  mkFormatter = (system:
+  mkFormatter = (
+    system:
     let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+      pkgs = import nixpkgs { inherit system; };
 
       treefmtEval = treefmt-nix.lib.evalModule pkgs {
         projectRootFile = ".git/config";

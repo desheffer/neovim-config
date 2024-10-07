@@ -3,8 +3,8 @@ inputs@{ flake-utils, ... }:
 let
   lib = import ../lib inputs;
 
-  mkPackages = (system:
-    rec {
+  mkPackages = (
+    system: rec {
       default = neovim;
 
       neovim = lib.mkNeovim {

@@ -1,6 +1,11 @@
 inputs@{ ... }:
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -27,8 +32,9 @@ let
       };
     };
 
-    extraMakeWrapperArgs = lib.optionalString (cfg.extraPackages != [ ])
-      ''--suffix PATH : "${lib.makeBinPath cfg.extraPackages}"'';
+    extraMakeWrapperArgs = lib.optionalString (
+      cfg.extraPackages != [ ]
+    ) ''--suffix PATH : "${lib.makeBinPath cfg.extraPackages}"'';
   };
 
 in
@@ -109,8 +115,6 @@ in
   };
 
   config = {
-    programs.neovim-config.finalPackage = pkgs'.wrapNeovim
-      pkgs'.neovim-unwrapped
-      neovimConfig;
+    programs.neovim-config.finalPackage = pkgs'.wrapNeovim pkgs'.neovim-unwrapped neovimConfig;
   };
 }
