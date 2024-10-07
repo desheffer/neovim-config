@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, flake-utils, ... }:
+inputs@{ nixpkgs, flake-utils, treefmt-nix, ... }:
 
 let
   mkFormatter = (system:
@@ -7,8 +7,13 @@ let
         inherit system;
       };
 
+      treefmtEval = treefmt-nix.lib.evalModule pkgs {
+        projectRootFile = ".git/config";
+        programs.nixfmt.enable = true;
+      };
+
     in
-    pkgs.nixpkgs-fmt
+    treefmtEval.config.build.wrapper
   );
 
 in
