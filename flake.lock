@@ -338,6 +338,38 @@
         "type": "github"
       }
     },
+    "noice-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727897551,
+        "narHash": "sha256-9ivgP145phRzu6OD2nwqjgD8glCThnDjS31XHsjbVuM=",
+        "owner": "folke",
+        "repo": "noice.nvim",
+        "rev": "df448c649ef6bc5a6a633a44f2ad0ed8d4442499",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "noice.nvim",
+        "type": "github"
+      }
+    },
+    "nui-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726376728,
+        "narHash": "sha256-90Wq+vT361mTaGU/SvAezqJkX9HHmZ2GI2fKBDxPn04=",
+        "owner": "MunifTanjim",
+        "repo": "nui.nvim",
+        "rev": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MunifTanjim",
+        "repo": "nui.nvim",
+        "type": "github"
+      }
+    },
     "nvim-cmp": {
       "flake": false,
       "locked": {
@@ -383,6 +415,22 @@
       "original": {
         "owner": "neovim",
         "repo": "nvim-lspconfig",
+        "type": "github"
+      }
+    },
+    "nvim-notify": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727022370,
+        "narHash": "sha256-Sd7IR5roXHOKRCxhqtYMhWfEltyRJMDEMDO/ecSKenE=",
+        "owner": "rcarriga",
+        "repo": "nvim-notify",
+        "rev": "fbef5d32be8466dd76544a257d3f3dce20082a07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rcarriga",
+        "repo": "nvim-notify",
         "type": "github"
       }
     },
@@ -488,9 +536,12 @@
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
         "nixpkgs": "nixpkgs",
+        "noice-nvim": "noice-nvim",
+        "nui-nvim": "nui-nvim",
         "nvim-cmp": "nvim-cmp",
         "nvim-hlslens": "nvim-hlslens",
         "nvim-lspconfig": "nvim-lspconfig",
+        "nvim-notify": "nvim-notify",
         "nvim-tree-lua": "nvim-tree-lua",
         "nvim-treesitter-context": "nvim-treesitter-context",
         "nvim-web-devicons": "nvim-web-devicons",

@@ -80,6 +80,14 @@
       url = "github:L3MON4D3/LuaSnip";
       flake = false;
     };
+    noice-nvim = {
+      url = "github:folke/noice.nvim";
+      flake = false;
+    };
+    nui-nvim = {
+      url = "github:MunifTanjim/nui.nvim";
+      flake = false;
+    };
     nvim-cmp = {
       url = "github:hrsh7th/nvim-cmp";
       flake = false;
@@ -90,6 +98,10 @@
     };
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";
+      flake = false;
+    };
+    nvim-notify = {
+      url = "github:rcarriga/nvim-notify";
       flake = false;
     };
     nvim-tree-lua = {
