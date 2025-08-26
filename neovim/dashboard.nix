@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "alpha-nvim";
         src = inputs.alpha-nvim;
+        doCheck = false;
       })
     ];
 

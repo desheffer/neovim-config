@@ -26,6 +26,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "gitsigns-nvim";
         src = inputs.gitsigns-nvim;
+        doCheck = false;
       })
     ];
 

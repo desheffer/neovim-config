@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "gruvbox-material";
         src = inputs.gruvbox-material;
+        doCheck = false;
       })
     ];
 

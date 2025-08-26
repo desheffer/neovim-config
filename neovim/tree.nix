@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-tree-lua";
         src = inputs.nvim-tree-lua;
+        doCheck = false;
       })
     ];
 

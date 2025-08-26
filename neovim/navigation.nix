@@ -24,18 +24,22 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "hop-nvim";
         src = inputs.hop-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-hlslens";
         src = inputs.nvim-hlslens;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "vim-asterisk";
         src = inputs.vim-asterisk;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "vim-signature";
         src = inputs.vim-signature;
+        doCheck = false;
       })
     ];
 

@@ -26,6 +26,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-treesitter-context";
         src = inputs.nvim-treesitter-context;
+        doCheck = false;
       })
     ];
 

@@ -17,18 +17,16 @@ let
 
   mapMapping =
     elem:
-    ''wk.register({ ["${elem.lhs}"] = {''
+    ''wk.add({{"${elem.lhs}", ''
     + (
       if elem.rhs != null then
-        ''[[${elem.rhs}]], [[${elem.name}]]''
+        ''[[${elem.rhs}]], desc = [[${elem.name}]]''
       else if elem.lua != null then
-        ''function () ${elem.lua} end, [[${elem.name}]]''
+        ''function () ${elem.lua} end, desc = [[${elem.name}]]''
       else
         ''name = [[${elem.name}]]''
     )
-    + ''
-      }}, {mode = [[${elem.mode}]]})
-    '';
+    + '', mode = [[${elem.mode}]]}})'';
   concat = foldr (a: b: a + b) "";
   registerMappings = concat (map mapMapping config.programs.neovim-config.mappings);
 
@@ -41,6 +39,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "which-key-nvim";
         src = inputs.which-key-nvim;
+        doCheck = false;
       })
     ];
 
@@ -56,7 +55,6 @@ in
             enabled = false,
           },
         },
-        ignore_missing = true,
       })
 
       ${registerMappings}

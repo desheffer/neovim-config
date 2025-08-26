@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "auto-session";
         src = inputs.auto-session;
+        doCheck = false;
       })
     ];
 

@@ -24,10 +24,12 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "lualine-nvim";
         src = inputs.lualine-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-web-devicons";
         src = inputs.nvim-web-devicons;
+        doCheck = false;
       })
     ];
 

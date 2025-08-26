@@ -24,26 +24,32 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "cmp-buffer";
         src = inputs.cmp-buffer;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "cmp-nvim-lsp";
         src = inputs.cmp-nvim-lsp;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "cmp_luasnip";
         src = inputs.cmp_luasnip;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "friendly-snippets";
         src = inputs.friendly-snippets;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "luasnip";
         src = inputs.luasnip;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-cmp";
         src = inputs.nvim-cmp;
+        doCheck = false;
       })
     ];
 

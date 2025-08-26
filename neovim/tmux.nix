@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "vim-tmux-navigator";
         src = inputs.vim-tmux-navigator;
+        doCheck = false;
       })
     ];
 

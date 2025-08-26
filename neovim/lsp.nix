@@ -30,22 +30,27 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-lspconfig";
         src = inputs.nvim-lspconfig;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "efmls-configs-nvim";
         src = inputs.efmls-configs-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "trouble-nvim";
         src = inputs.trouble-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "copilot-lua";
         src = inputs.copilot-lua;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "CopilotChat-nvim";
         src = inputs.CopilotChat-nvim;
+        doCheck = false;
       })
     ];
 

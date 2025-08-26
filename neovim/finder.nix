@@ -24,14 +24,17 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "plenary-nvim";
         src = inputs.plenary-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "telescope-nvim";
         src = inputs.telescope-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "telescope-ui-select-nvim";
         src = inputs.telescope-ui-select-nvim;
+        doCheck = false;
       })
     ];
 

@@ -24,10 +24,12 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "bufferline-nvim";
         src = inputs.bufferline-nvim;
+        doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-web-devicons";
         src = inputs.nvim-web-devicons;
+        doCheck = false;
       })
     ];
 

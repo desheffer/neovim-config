@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "registers-nvim";
         src = inputs.registers-nvim;
+        doCheck = false;
       })
     ];
 

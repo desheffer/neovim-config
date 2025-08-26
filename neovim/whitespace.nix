@@ -24,6 +24,7 @@ in
       (pkgs'.vimUtils.buildVimPlugin {
         name = "indent-blankline-nvim";
         src = inputs.indent-blankline-nvim;
+        doCheck = false;
       })
     ];
 
