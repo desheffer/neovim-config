@@ -74,9 +74,9 @@ in
           vim.fn.system("git rev-parse --is-inside-work-tree")
 
           if vim.v.shell_error == 0 then
-            require("telescope.builtin").git_files()
+            require("telescope.builtin").git_files({path_display = {"filename_first"}})
           else
-            require("telescope.builtin").find_files()
+            require("telescope.builtin").find_files({path_display = {"filename_first"}})
           end
         '';
       }
@@ -87,17 +87,17 @@ in
       {
         lhs = "<Leader>fa";
         name = "Find all files";
-        lua = ''require("telescope.builtin").find_files({hidden = true})'';
+        lua = ''require("telescope.builtin").find_files({hidden = true, path_display = {"filename_first"}})'';
       }
       {
         lhs = "<Leader>fb";
         name = "Find buffers";
-        lua = ''require("telescope.builtin").buffers()'';
+        lua = ''require("telescope.builtin").buffers({path_display = {"filename_first"}})'';
       }
       {
         lhs = "<Leader>ff";
         name = "Find files";
-        lua = ''require("telescope.builtin").find_files()'';
+        lua = ''require("telescope.builtin").find_files({path_display = {"filename_first"}})'';
       }
       {
         lhs = "<Leader>fg";
@@ -112,7 +112,7 @@ in
       {
         lhs = "<Leader>fo";
         name = "Find old files";
-        lua = ''require("telescope.builtin").oldfiles()'';
+        lua = ''require("telescope.builtin").oldfiles({path_display = {"filename_first"}})'';
       }
       {
         lhs = "<Leader>fr";
@@ -147,12 +147,12 @@ in
       {
         lhs = "<Leader>gf";
         name = "Git files";
-        lua = ''require("telescope.builtin").git_files()'';
+        lua = ''require("telescope.builtin").git_files({path_display = {"filename_first"}})'';
       }
       {
         lhs = "<Leader>gs";
         name = "Git status";
-        lua = ''require("telescope.builtin").git_status()'';
+        lua = ''require("telescope.builtin").git_status({path_display = {"filename_first"}})'';
       }
       {
         lhs = "z=";
