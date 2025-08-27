@@ -15,6 +15,7 @@ with lib;
     (import ./completion.nix inputs)
     (import ./dashboard.nix inputs)
     (import ./editing.nix inputs)
+    (import ./explorer.nix inputs)
     (import ./finder.nix inputs)
     (import ./general.nix inputs)
     (import ./git.nix inputs)
@@ -25,7 +26,6 @@ with lib;
     (import ./status.nix inputs)
     (import ./syntax.nix inputs)
     (import ./tmux.nix inputs)
-    (import ./tree.nix inputs)
     (import ./whitespace.nix inputs)
   ];
 }

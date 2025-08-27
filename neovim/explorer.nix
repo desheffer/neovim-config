@@ -13,11 +13,11 @@ let
   lib' = import ../lib inputs;
   pkgs' = lib'.mkPkgs pkgs.system;
 
-  cfg = config.programs.neovim-config.tree;
+  cfg = config.programs.neovim-config.explorer;
 
 in
 {
-  options.programs.neovim-config.tree = { };
+  options.programs.neovim-config.explorer = { };
 
   config.programs.neovim-config = {
     plugins = [
@@ -58,8 +58,8 @@ in
 
     mappings = [
       {
-        lhs = "<Leader>n";
-        name = "Show file tree";
+        lhs = "<Leader>e";
+        name = "Show file explorer";
         lua = ''
           local api = require("nvim-tree.api")
           api.tree.find_file({open = true})
