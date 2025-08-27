@@ -17,6 +17,8 @@ let
 
 in
 {
+  options.programs.neovim-config.ai = { };
+
   config.programs.neovim-config = {
     extraPackages = with pkgs'; [ nodejs ];
 
