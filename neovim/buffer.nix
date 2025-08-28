@@ -34,28 +34,6 @@ in
     ];
 
     config = ''
-      require("bufferline").setup({
-        options = {
-          offsets = {
-            {
-              filetype = "NvimTree",
-              highlight = "NvimTreeNormal",
-              padding = 1,
-            },
-          },
-          show_buffer_close_icons = false,
-          show_close_icon = false,
-        },
-      })
-
-      -- Hide certain buffers in the buffer list.
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {"qf", "vim"},
-        callback = function ()
-          vim.bo.buflisted = false
-        end,
-      })
-
       local placeholder = "placeholder"
 
       local buffer_next = function ()
@@ -117,8 +95,8 @@ in
             return
           end
 
-          -- If the buffer is unlisted (e.g. help, quickfix, tree) and is acting like
-          -- a sidebar, then close its window before deleting the buffer.
+          -- If the buffer is unlisted (e.g., help, quickfix, tree) and is acting
+          -- like a sidebar, then close its window before deleting the buffer.
           if not buflisted and #windows > 1 then
             vim.api.nvim_win_close(0, {})
           end
@@ -127,8 +105,8 @@ in
           local replacement_buffer = current_buffer
           for index, buffer in ipairs(listed_buffers) do
             if buffer == current_buffer then
-              -- If this is the first buffer, then pull from the right. Otherwise, pull from
-              -- the left.
+              -- If this is the first buffer, then pull from the right. Otherwise,
+              -- pull from the left.
               if index == 1 then
                 replacement_buffer = listed_buffers[index % #listed_buffers + 1]
               else
@@ -154,7 +132,13 @@ in
           end
 
           -- Delete the buffer with confirmation for any unsaved changes.
-          pcall(function () vim.cmd(string.format([[confirm bdelete %d]], current_buffer)) end)
+          local success = pcall(function () vim.cmd(string.format([[confirm bdelete %d]], current_buffer)) end)
+
+          -- If deletion failed (e.g., the buffer had unsaved changes) then make it
+          -- active again.
+          if not success and vim.api.nvim_buf_is_valid(current_buffer) then
+            vim.api.nvim_win_set_buf(0, current_buffer)
+          end
         end)
       end
 
@@ -175,6 +159,29 @@ in
           vim.cmd([[qall]])
         end)
       end
+
+      require("bufferline").setup({
+        options = {
+          close_command = "silent! bdelete %d",
+          offsets = {
+            {
+              filetype = "NvimTree",
+              highlight = "NvimTreeNormal",
+              padding = 1,
+            },
+          },
+          show_buffer_close_icons = false,
+          show_close_icon = false,
+        },
+      })
+
+      -- Hide certain buffers in the buffer list.
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {"qf", "vim"},
+        callback = function ()
+          vim.bo.buflisted = false
+        end,
+      })
     '';
 
     mappings = [
@@ -217,6 +224,23 @@ in
         lhs = "<C-q>";
         name = "Quit Neovim";
         lua = ''quit()'';
+      }
+      {
+        lhs = "<Leader>b";
+        name = "+buffer";
+      }
+      {
+        lhs = "<Leader>bc";
+        name = "Close all buffers";
+        lua = ''
+          vim.cmd([[BufferLineCloseOthers]])
+          buffer_delete()
+        '';
+      }
+      {
+        lhs = "<Leader>bo";
+        name = "Close all buffers except current";
+        lua = ''vim.cmd([[BufferLineCloseOthers]])'';
       }
     ];
   };
