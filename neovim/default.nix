@@ -22,7 +22,6 @@ with lib;
     (import ./lsp.nix inputs)
     (import ./navigation.nix inputs)
     (import ./register.nix inputs)
-    (import ./session.nix inputs)
     (import ./status.nix inputs)
     (import ./syntax.nix inputs)
     (import ./tmux.nix inputs)
