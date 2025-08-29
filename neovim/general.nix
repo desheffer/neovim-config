@@ -95,17 +95,20 @@ in
       vim.opt.colorcolumn = "80"
 
       -- Set colorcolumn dynamically if textwidth is set.
-      vim.api.nvim_create_autocmd("BufEnter", {
-          pattern = "*",
-          callback = function ()
-              if vim.bo.textwidth > 0 then
-                  vim.wo.colorcolumn = "+1"
-              end
-          end,
+      vim.api.nvim_create_autocmd("BufRead", {
+        pattern = "*",
+        callback = function ()
+          if vim.bo.textwidth > 0 then
+            vim.wo.colorcolumn = "+1"
+          end
+        end,
       })
 
       -- Wrap lines at the word boundary.
       vim.opt.linebreak = true
+
+      -- Show wrapped line breaks.
+      vim.opt.showbreak = '↪'
 
       -- Pad the cursor with 5 lines.
       vim.opt.scrolloff = 5
@@ -116,7 +119,22 @@ in
       -- Display hidden characters.
       vim.opt.list = true
       vim.opt.listchars:append("tab:——▷")
+      vim.opt.listchars:append("multispace:·")
+      vim.opt.listchars:append("leadmultispace: ")
       vim.opt.listchars:append("trail:·")
+
+      -- Set leadmultispace dynamically based on shiftwidth.
+      vim.api.nvim_create_autocmd({"BufRead", "OptionSet"}, {
+        pattern = "*",
+        callback = function ()
+          local listchars = vim.opt.listchars:get()
+          leadmultispace = string.rep(" ", vim.bo.shiftwidth - 1) .. "▕"
+          if listchars.leadmultispace ~= leadmultispace then
+            listchars.leadmultispace = leadmultispace
+            vim.opt_local.listchars = listchars
+          end
+        end,
+      })
 
       -- Enable spell checking.
       vim.opt.spell = true

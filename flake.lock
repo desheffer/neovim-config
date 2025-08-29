@@ -258,22 +258,6 @@
         "type": "github"
       }
     },
-    "indent-blankline-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742224677,
-        "narHash": "sha256-0q/V+b4UrDRnaC/eRWOi9HU9a61vQSAM9/C8ZQyKt+Y=",
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "type": "github"
-      }
-    },
     "lualine-nvim": {
       "flake": false,
       "locked": {
@@ -484,7 +468,6 @@
         "gitsigns-nvim": "gitsigns-nvim",
         "gruvbox-material": "gruvbox-material",
         "hop-nvim": "hop-nvim",
-        "indent-blankline-nvim": "indent-blankline-nvim",
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
         "nixpkgs": "nixpkgs",

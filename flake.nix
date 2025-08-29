@@ -68,10 +68,6 @@
       url = "github:phaazon/hop.nvim";
       flake = false;
     };
-    indent-blankline-nvim = {
-      url = "github:lukas-reineke/indent-blankline.nvim";
-      flake = false;
-    };
     lualine-nvim = {
       url = "github:nvim-lualine/lualine.nvim";
       flake = false;

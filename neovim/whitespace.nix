@@ -20,17 +20,9 @@ in
   options.programs.neovim-config.whitespace = { };
 
   config.programs.neovim-config = {
-    plugins = [
-      (pkgs'.vimUtils.buildVimPlugin {
-        name = "indent-blankline-nvim";
-        src = inputs.indent-blankline-nvim;
-        doCheck = false;
-      })
-    ];
+    plugins = [ ];
 
     config = ''
-      require("ibl").setup()
-
       -- Remove trailing whitespace on save.
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*",
