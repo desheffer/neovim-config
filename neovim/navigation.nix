@@ -67,6 +67,10 @@ in
       vim.keymap.set("n", "<C-d>", [[<C-d>zz]])
       vim.keymap.set("n", "<C-u>", [[<C-u>zz]])
 
+      -- Override C-e/C-y to scroll multiple lines.
+      vim.keymap.set("n", "<C-e>", [[5<C-e>]])
+      vim.keymap.set("n", "<C-y>", [[5<C-y>]])
+
       -- Override search navigation.
       vim.keymap.set("",  "*",  [[<Plug>(asterisk-z*)<Cmd>lua require("hlslens").start()<CR>]])
       vim.keymap.set("",  "#",  [[<Plug>(asterisk-z#)<Cmd>lua require("hlslens").start()<CR>]])
