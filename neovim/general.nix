@@ -75,6 +75,22 @@ in
       vim.opt.number = true
       vim.opt.relativenumber = true
 
+      -- Show absolute line numbers in insert mode.
+      vim.api.nvim_create_autocmd({"InsertEnter"}, {
+        callback = function()
+          vim.opt.relativenumber = false
+        end,
+      })
+      vim.api.nvim_create_autocmd({"InsertLeave"}, {
+        callback = function()
+          vim.opt.relativenumber = true
+        end,
+      })
+
+      -- Highlight current line number.
+      vim.opt.cursorline = true
+      vim.opt.cursorlineopt = "number"
+
       -- Draw right margin at 80 characters.
       vim.opt.colorcolumn = "80"
 
