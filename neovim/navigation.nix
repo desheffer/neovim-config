@@ -93,6 +93,17 @@ in
         mode = "v";
       }
       {
+        lhs = "<Leader>/";
+        name = "Hop to pattern";
+        lua = ''require("hop").hint_patterns()'';
+      }
+      {
+        lhs = "<Leader>/";
+        name = "Hop to pattern";
+        lua = ''require("hop").hint_patterns()'';
+        mode = "v";
+      }
+      {
         lhs = "<C-l>";
         name = "Turn off search highlighting";
         rhs = '':nohlsearch<CR>'';

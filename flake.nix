@@ -61,7 +61,7 @@
       flake = false;
     };
     hop-nvim = {
-      url = "github:phaazon/hop.nvim";
+      url = "github:smoka7/hop.nvim";
       flake = false;
     };
     lualine-nvim = {
