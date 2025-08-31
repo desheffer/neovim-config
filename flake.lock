@@ -48,22 +48,6 @@
         "type": "github"
       }
     },
-    "auto-session": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1756155988,
-        "narHash": "sha256-ygVRycID6YBHNFda4gvWhqnDtCNAMwE/IUBH0ef7W3Y=",
-        "owner": "rmagatti",
-        "repo": "auto-session",
-        "rev": "647c02e55eaab65e6bac97305791d3bce232f7de",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rmagatti",
-        "repo": "auto-session",
-        "type": "github"
-      }
-    },
     "bufferline-nvim": {
       "flake": false,
       "locked": {

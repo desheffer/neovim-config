@@ -16,10 +16,6 @@
       url = "github:goolord/alpha-nvim";
       flake = false;
     };
-    auto-session = {
-      url = "github:rmagatti/auto-session";
-      flake = false;
-    };
     bufferline-nvim = {
       url = "github:akinsho/bufferline.nvim";
       flake = false;
