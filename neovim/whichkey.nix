@@ -49,6 +49,7 @@ in
 
       local wk = require("which-key")
       wk.setup({
+        preset = "helix",
         plugins = {
           registers = false,
           spelling = {
