@@ -66,8 +66,8 @@ in
       end
 
       dashboard.section.buttons.val = {
-        button("New",          "<C-n>"),
-        button("Files",        "<C-p>"),
+        button("New",          "<Space>bn"),
+        button("Files",        "<Space>ff"),
         button("Recent Files", "<Space>fo"),
         button("Grep",         "<Space>fg"),
       }

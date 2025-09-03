@@ -26,5 +26,6 @@ with lib;
     (import ./syntax.nix inputs)
     (import ./tmux.nix inputs)
     (import ./whitespace.nix inputs)
+    (import ./window.nix inputs)
   ];
 }

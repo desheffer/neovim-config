@@ -186,11 +186,6 @@ in
 
     mappings = [
       {
-        lhs = "<C-n>";
-        name = "Create a new buffer";
-        lua = ''vim.cmd([[enew]])'';
-      }
-      {
         lhs = "<C-PageDown>";
         name = "Next buffer";
         lua = ''buffer_next()'';
@@ -236,6 +231,16 @@ in
           vim.cmd([[BufferLineCloseOthers]])
           buffer_delete()
         '';
+      }
+      {
+        lhs = "<Leader>bn";
+        name = "Create a new buffer";
+        lua = ''vim.cmd([[enew]])'';
+      }
+      {
+        lhs = "<Leader>bo";
+        name = "Delete buffer";
+        lua = ''buffer_delete()'';
       }
       {
         lhs = "<Leader>bo";
