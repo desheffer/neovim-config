@@ -195,6 +195,10 @@ in
 
       lspconfig.jdtls.setup({
         capabilities = capabilities,
+        handlers = {
+          ["language/status"] = function(_, _) end,
+          ["$/progress"] = function() end,
+        },
       })
 
       lspconfig.lua_ls.setup({
