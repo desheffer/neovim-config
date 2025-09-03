@@ -40,6 +40,10 @@ in
         "╚═╝  ╚═══╝   ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
       }
 
+      local version = vim.version()
+      local print_version = "v" .. version.major .. "." .. version.minor .. "." .. version.patch
+      dashboard.section.footer.val = print_version
+
       local function button(text, keycode)
         local function on_press()
           local keys = vim.api.nvim_replace_termcodes(keycode, true, false, true)
