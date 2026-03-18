@@ -274,6 +274,22 @@
         "type": "github"
       }
     },
+    "markdown-preview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697511247,
+        "narHash": "sha256-TBXdG/Ih5DusAYZJyn37zVqHcMD85VkjrCoLyTo/KBg=",
+        "owner": "iamcco",
+        "repo": "markdown-preview.nvim",
+        "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iamcco",
+        "repo": "markdown-preview.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1755615617,
@@ -453,6 +469,7 @@
         "hop-nvim": "hop-nvim",
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
+        "markdown-preview-nvim": "markdown-preview-nvim",
         "nixpkgs": "nixpkgs",
         "nvim-cmp": "nvim-cmp",
         "nvim-hlslens": "nvim-hlslens",

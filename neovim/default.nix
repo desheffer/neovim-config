@@ -21,6 +21,7 @@ with lib;
     (import ./git.nix inputs)
     (import ./lsp.nix inputs)
     (import ./navigation.nix inputs)
+    (import ./preview.nix inputs)
     (import ./register.nix inputs)
     (import ./status.nix inputs)
     (import ./syntax.nix inputs)

@@ -72,6 +72,10 @@
       url = "github:L3MON4D3/LuaSnip";
       flake = false;
     };
+    markdown-preview-nvim = {
+      url = "github:iamcco/markdown-preview.nvim";
+      flake = false;
+    };
     nvim-cmp = {
       url = "github:hrsh7th/nvim-cmp";
       flake = false;
