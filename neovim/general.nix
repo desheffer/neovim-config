@@ -29,8 +29,13 @@ in
       -- Disable mouse support.
       vim.opt.mouse = ""
 
-      -- Disable swap files.
-      vim.opt.swapfile = false
+      -- Enable swap files for crash recovery.
+      vim.opt.swapfile = true
+
+      -- Enable backups.
+      vim.opt.backup = true
+      vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup//"
+      vim.fn.mkdir(vim.opt.backupdir:get()[1], "p")
 
       -- Enable persistent undo.
       vim.opt.undofile = true
