@@ -36,14 +36,6 @@
       url = "github:numToStr/Comment.nvim";
       flake = false;
     };
-    copilot-lua = {
-      url = "github:zbirenbaum/copilot.lua";
-      flake = false;
-    };
-    CopilotChat-nvim = {
-      url = "github:CopilotC-Nvim/CopilotChat.nvim";
-      flake = false;
-    };
     efmls-configs-nvim = {
       url = "github:creativenull/efmls-configs-nvim";
       flake = false;

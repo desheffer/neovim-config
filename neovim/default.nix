@@ -9,7 +9,6 @@ with lib;
     (import ./neovim.nix inputs)
     (import ./whichkey.nix inputs)
 
-    (import ./ai.nix inputs)
     (import ./buffer.nix inputs)
     (import ./colorscheme.nix inputs)
     (import ./completion.nix inputs)
