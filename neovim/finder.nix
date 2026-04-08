@@ -32,6 +32,11 @@ in
         doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
+        name = "telescope-insert-path-nvim";
+        src = inputs.telescope-insert-path-nvim;
+        doCheck = false;
+      })
+      (pkgs'.vimUtils.buildVimPlugin {
         name = "telescope-ui-select-nvim";
         src = inputs.telescope-ui-select-nvim;
         doCheck = false;
@@ -49,6 +54,12 @@ in
           layout_config = {
             horizontal = {
               prompt_position = "top",
+            },
+          },
+          mappings = {
+            n = {
+              ["gf"] = require("telescope_insert_path").insert_reltobufpath_a_normal,
+              ["gF"] = require("telescope_insert_path").insert_abspath_a_normal,
             },
           },
           path_display = {

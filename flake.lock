@@ -445,6 +445,7 @@
         "nvim-web-devicons": "nvim-web-devicons",
         "plenary-nvim": "plenary-nvim",
         "registers-nvim": "registers-nvim",
+        "telescope-insert-path-nvim": "telescope-insert-path-nvim",
         "telescope-nvim": "telescope-nvim",
         "telescope-ui-select-nvim": "telescope-ui-select-nvim",
         "treefmt-nix": "treefmt-nix",
@@ -472,6 +473,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telescope-insert-path-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766216071,
+        "narHash": "sha256-szUnmf2kKqR8p69/Y+7dlstfrMfaXZTQyKkZPldopJI=",
+        "owner": "kiyoon",
+        "repo": "telescope-insert-path.nvim",
+        "rev": "286815cf0cd743f21c705466203dc19cc02f1144",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kiyoon",
+        "repo": "telescope-insert-path.nvim",
         "type": "github"
       }
     },

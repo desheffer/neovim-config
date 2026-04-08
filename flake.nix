@@ -104,6 +104,10 @@
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;
     };
+    telescope-insert-path-nvim = {
+      url = "github:kiyoon/telescope-insert-path.nvim";
+      flake = false;
+    };
     telescope-ui-select-nvim = {
       url = "github:nvim-telescope/telescope-ui-select.nvim";
       flake = false;
