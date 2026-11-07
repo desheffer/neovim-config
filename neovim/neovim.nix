@@ -7,8 +7,6 @@ inputs@{ ... }:
   ...
 }:
 
-with lib;
-
 let
   cfg = config.programs.neovim-config;
 
@@ -37,14 +35,14 @@ let
 in
 {
   options.programs.neovim-config = {
-    leader = mkOption {
-      type = types.str;
+    leader = lib.mkOption {
+      type = lib.types.str;
       description = "Set the mapleader value.";
       default = " ";
     };
 
-    config = mkOption {
-      type = types.lines;
+    config = lib.mkOption {
+      type = lib.types.lines;
       description = "Custom Neovim Lua configuration lines.";
       default = "";
     };
@@ -53,58 +51,58 @@ in
       let
         mappingOpts = {
           options = {
-            lhs = mkOption {
-              type = types.str;
+            lhs = lib.mkOption {
+              type = lib.types.str;
               description = "Sets the left-hand-side of the mapping.";
               default = null;
             };
 
-            name = mkOption {
-              type = types.str;
+            name = lib.mkOption {
+              type = lib.types.str;
               description = "Sets the name of the mapping or mapping group.";
               default = null;
             };
 
-            rhs = mkOption {
-              type = types.nullOr types.str;
+            rhs = lib.mkOption {
+              type = lib.types.nullOr lib.types.str;
               description = "Sets the right-hand-side of the mapping.";
               default = null;
             };
 
-            lua = mkOption {
-              type = types.nullOr types.str;
+            lua = lib.mkOption {
+              type = lib.types.nullOr lib.types.str;
               description = "Sets the right-hand-side of the mapping as Lua code.";
               default = null;
             };
 
-            mode = mkOption {
-              type = types.str;
+            mode = lib.mkOption {
+              type = lib.types.str;
               description = "Sets the mode short-name.";
               default = "n";
             };
           };
         };
       in
-      mkOption {
-        type = types.listOf (types.submodule mappingOpts);
+      lib.mkOption {
+        type = lib.types.listOf (lib.types.submodule mappingOpts);
         description = "Sets the available key mappings.";
         default = { };
       };
 
-    plugins = mkOption {
-      type = types.listOf types.package;
+    plugins = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
       description = "Plugins to load when Neovim is started.";
       default = [ ];
     };
 
-    extraPackages = mkOption {
-      type = types.listOf types.package;
+    extraPackages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
       description = "Extra packages available to Neovim.";
       default = [ ];
     };
 
-    finalPackage = mkOption {
-      type = types.package;
+    finalPackage = lib.mkOption {
+      type = lib.types.package;
       description = "Resulting customized Neovim package.";
       visible = false;
       readOnly = true;

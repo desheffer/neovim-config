@@ -2,16 +2,14 @@ inputs:
 
 { config, lib, ... }:
 
-with lib;
-
 let
   cfg = config.programs.neovim-config;
 
 in
 {
   options.programs.neovim-config = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable Neovim.";
       default = false;
     };
@@ -19,5 +17,5 @@ in
 
   imports = [ (import ../neovim inputs) ];
 
-  config = mkIf cfg.enable { home.packages = [ config.programs.neovim-config.finalPackage ]; };
+  config = lib.mkIf cfg.enable { home.packages = [ config.programs.neovim-config.finalPackage ]; };
 }

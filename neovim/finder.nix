@@ -7,8 +7,6 @@ inputs:
   ...
 }:
 
-with lib;
-
 let
   cfg = config.programs.neovim-config.finder;
 

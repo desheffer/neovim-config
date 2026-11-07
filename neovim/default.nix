@@ -7,8 +7,6 @@ inputs:
   ...
 }:
 
-with lib;
-
 let
   lib' = import ../lib inputs;
 

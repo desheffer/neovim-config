@@ -7,8 +7,6 @@ inputs:
   ...
 }:
 
-with lib;
-
 let
   cfg = config.programs.neovim-config.whichkey;
 
@@ -24,7 +22,7 @@ let
         ''name = [[${elem.name}]]''
     )
     + '', mode = [[${elem.mode}]]}})'';
-  concat = foldr (a: b: a + b) "";
+  concat = lib.foldr (a: b: a + b) "";
   registerMappings = concat (map mapMapping config.programs.neovim-config.mappings);
 
 in

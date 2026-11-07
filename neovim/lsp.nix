@@ -7,22 +7,20 @@ inputs:
   ...
 }:
 
-with lib;
-
 let
   cfg = config.programs.neovim-config.lsp;
 
 in
 {
   options.programs.neovim-config.lsp = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable language servers.";
       default = false;
     };
   };
 
-  config.programs.neovim-config = mkIf cfg.enable {
+  config.programs.neovim-config = lib.mkIf cfg.enable {
     plugins = [
       (pkgs'.vimUtils.buildVimPlugin {
         name = "nvim-lspconfig";
