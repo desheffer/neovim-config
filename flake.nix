@@ -16,18 +16,6 @@
       url = "github:akinsho/bufferline.nvim";
       flake = false;
     };
-    cmp-buffer = {
-      url = "github:hrsh7th/cmp-buffer";
-      flake = false;
-    };
-    cmp-nvim-lsp = {
-      url = "github:hrsh7th/cmp-nvim-lsp";
-      flake = false;
-    };
-    cmp_luasnip = {
-      url = "github:saadparwaiz1/cmp_luasnip";
-      flake = false;
-    };
     efmls-configs-nvim = {
       url = "github:creativenull/efmls-configs-nvim";
       flake = false;
@@ -52,16 +40,8 @@
       url = "github:nvim-lualine/lualine.nvim";
       flake = false;
     };
-    luasnip = {
-      url = "github:L3MON4D3/LuaSnip";
-      flake = false;
-    };
     markdown-preview-nvim = {
       url = "github:iamcco/markdown-preview.nvim";
-      flake = false;
-    };
-    nvim-cmp = {
-      url = "github:hrsh7th/nvim-cmp";
       flake = false;
     };
     nvim-hlslens = {
