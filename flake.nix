@@ -32,10 +32,6 @@
       url = "github:saadparwaiz1/cmp_luasnip";
       flake = false;
     };
-    comment-nvim = {
-      url = "github:numToStr/Comment.nvim";
-      flake = false;
-    };
     efmls-configs-nvim = {
       url = "github:creativenull/efmls-configs-nvim";
       flake = false;

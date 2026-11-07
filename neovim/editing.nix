@@ -17,11 +17,6 @@ in
   config.programs.neovim-config = {
     plugins = [
       (pkgs'.vimUtils.buildVimPlugin {
-        name = "comment-nvim";
-        src = inputs.comment-nvim;
-        doCheck = false;
-      })
-      (pkgs'.vimUtils.buildVimPlugin {
         name = "vim-argumentative";
         src = inputs.vim-argumentative;
         doCheck = false;
@@ -47,10 +42,6 @@ in
         doCheck = false;
       })
     ];
-
-    config = ''
-      require("Comment").setup()
-    '';
 
     mappings = [
       {

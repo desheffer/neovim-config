@@ -96,22 +96,6 @@
         "type": "github"
       }
     },
-    "comment-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717957420,
-        "narHash": "sha256-h0kPue5Eqd5aeu4VoLH45pF0DmWWo1d8SnLICSQ63zc=",
-        "owner": "numToStr",
-        "repo": "Comment.nvim",
-        "rev": "e30b7f2008e52442154b66f7c519bfd2f1e32acb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numToStr",
-        "repo": "Comment.nvim",
-        "type": "github"
-      }
-    },
     "efmls-configs-nvim": {
       "flake": false,
       "locked": {
@@ -426,7 +410,6 @@
         "cmp-buffer": "cmp-buffer",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp_luasnip": "cmp_luasnip",
-        "comment-nvim": "comment-nvim",
         "efmls-configs-nvim": "efmls-configs-nvim",
         "flake-utils": "flake-utils",
         "friendly-snippets": "friendly-snippets",
