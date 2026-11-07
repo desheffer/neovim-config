@@ -92,10 +92,6 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    registers-nvim = {
-      url = "github:tversteeg/registers.nvim";
-      flake = false;
-    };
     telescope-nvim = {
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;

@@ -15,21 +15,7 @@ in
   options.programs.neovim-config.register = { };
 
   config.programs.neovim-config = {
-    plugins = [
-      (pkgs'.vimUtils.buildVimPlugin {
-        name = "registers-nvim";
-        src = inputs.registers-nvim;
-        doCheck = false;
-      })
-    ];
-
     config = ''
-      require("registers").setup({
-        window = {
-          border = "rounded",
-        },
-      });
-
       -- Override put to avoid replacing the register value.
       vim.keymap.set("v", "p", [[pgvy]])
     '';

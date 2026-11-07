@@ -46,7 +46,6 @@ in
       wk.setup({
         preset = "helix",
         plugins = {
-          registers = false,
           spelling = {
             enabled = false,
           },

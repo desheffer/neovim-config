@@ -386,22 +386,6 @@
         "type": "github"
       }
     },
-    "registers-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1730794647,
-        "narHash": "sha256-M7uR3yXYUQ4I8Gt8P6k25q67UNwksRDPKGrS/FCqrt0=",
-        "owner": "tversteeg",
-        "repo": "registers.nvim",
-        "rev": "c217f8f369e0886776cda6c94eab839b30a8940d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tversteeg",
-        "repo": "registers.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "FTerm-nvim": "FTerm-nvim",
@@ -427,7 +411,6 @@
         "nvim-treesitter-context": "nvim-treesitter-context",
         "nvim-web-devicons": "nvim-web-devicons",
         "plenary-nvim": "plenary-nvim",
-        "registers-nvim": "registers-nvim",
         "telescope-insert-path-nvim": "telescope-insert-path-nvim",
         "telescope-nvim": "telescope-nvim",
         "telescope-ui-select-nvim": "telescope-ui-select-nvim",
