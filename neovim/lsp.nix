@@ -93,17 +93,11 @@ in
     ];
 
     config = ''
-      local lspconfig = require("lspconfig")
-
-      local capabilities = require("cmp_nvim_lsp")
-        .default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
-      lspconfig.ccls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("ccls", {
         init_options = {
           cache = {
             directory = vim.env.HOME .. "/.cache/ccls",
@@ -111,11 +105,8 @@ in
         },
       })
 
-      lspconfig.dockerls.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.efm.setup({
+      vim.lsp.config("efm", {
+        filetypes = {"java", "json", "nix", "python", "sh", "yaml"},
         init_options = {
           codeAction = true,
           completion = true,
@@ -171,30 +162,26 @@ in
         },
       })
 
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("gopls", {
         cmd_env = {
           GOPATH = vim.env.HOME .. "/.cache/gopls",
         },
       })
 
-      lspconfig.intelephense.setup({
-        capabilities = capabilities,
+      vim.lsp.config("intelephense", {
         init_options = {
           globalStoragePath = vim.env.HOME .. "/.cache/intelephense",
         },
       })
 
-      lspconfig.jdtls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("jdtls", {
         handlers = {
           ["language/status"] = function(_, _) end,
           ["$/progress"] = function() end,
         },
       })
 
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
+      vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
             diagnostics = {
@@ -204,16 +191,18 @@ in
         },
       })
 
-      lspconfig.pyright.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.rust_analyzer.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.yamlls.setup({
-        capabilities = capabilities,
+      vim.lsp.enable({
+        "bashls",
+        "ccls",
+        "dockerls",
+        "efm",
+        "gopls",
+        "intelephense",
+        "jdtls",
+        "lua_ls",
+        "pyright",
+        "rust_analyzer",
+        "yamlls",
       })
 
       vim.diagnostic.config({
