@@ -206,6 +206,11 @@ in
       })
 
       vim.diagnostic.config({
+        jump = {
+          on_jump = function (_, bufnr)
+            vim.diagnostic.open_float({bufnr = bufnr, scope = "cursor", focus = false})
+          end,
+        },
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = "󰀩",
@@ -294,12 +299,12 @@ in
       {
         lhs = "]d";
         name = "Next diagnostic";
-        lua = ''vim.diagnostic.goto_next({popup_opts = {focusable = false}})'';
+        lua = ''vim.diagnostic.jump({count = 1})'';
       }
       {
         lhs = "[d";
         name = "Previous diagnostic";
-        lua = ''vim.diagnostic.goto_prev({popup_opts = {focusable = false}})'';
+        lua = ''vim.diagnostic.jump({count = -1})'';
       }
       {
         lhs = "<Leader>cd";
