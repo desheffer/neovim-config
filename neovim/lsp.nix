@@ -39,61 +39,58 @@ in
       })
     ];
 
-    extraPackages =
-      with pkgs';
-      with nodePackages;
-      [
-        # Bash/Sh:
-        bash-language-server
-        beautysh
-        shellcheck
+    extraPackages = with pkgs'; [
+      # Bash/Sh:
+      bash-language-server
+      beautysh
+      shellcheck
 
-        # C/C++:
-        ccls
+      # C/C++:
+      ccls
 
-        # Docker:
-        dockerfile-language-server-nodejs
+      # Docker:
+      dockerfile-language-server
 
-        # Go:
-        gopls
-        go
+      # Go:
+      gopls
+      go
 
-        # Java:
-        jdt-language-server
-        google-java-format
+      # Java:
+      jdt-language-server
+      google-java-format
 
-        # JSON:
-        jq
+      # JSON:
+      jq
 
-        # Lua:
-        sumneko-lua-language-server
+      # Lua:
+      lua-language-server
 
-        # Nix:
-        nixfmt-rfc-style
-        statix
+      # Nix:
+      nixfmt
+      statix
 
-        # PHP:
-        intelephense
+      # PHP:
+      intelephense
 
-        # Python:
-        pyright
-        black
-        isort
-        pylint
+      # Python:
+      pyright
+      black
+      isort
+      pylint
 
-        # Rust:
-        cargo
-        rust-analyzer
-        rustc
+      # Rust:
+      cargo
+      rust-analyzer
+      rustc
 
-        # YAML:
-        yaml-language-server
-        actionlint
-        yq
+      # YAML:
+      yaml-language-server
+      actionlint
+      yq
 
-        # General purpose:
-        efm-langserver
-      ];
+      # General purpose:
+      efm-langserver
+    ];
 
     config = ''
       local lspconfig = require("lspconfig")

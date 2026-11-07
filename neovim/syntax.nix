@@ -28,19 +28,16 @@ in
     extraPackages = with pkgs'; [ gcc ];
 
     config = ''
-      require("nvim-treesitter.configs").setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            node_incremental = ".",
-            node_decremental = ",",
-          },
-        },
+      -- Enable highlighting for every file type that has a parser.
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function ()
+          pcall(vim.treesitter.start)
+        end,
       })
+
+      -- Expand and shrink the selection by syntax node.
+      vim.keymap.set("x", ".", "an", {remap = true})
+      vim.keymap.set("x", ",", "in", {remap = true})
 
       require("treesitter-context").setup({
         multiline_threshold = 1,
