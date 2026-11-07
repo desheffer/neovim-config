@@ -28,8 +28,13 @@ in
         doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
-        name = "efmls-configs-nvim";
-        src = inputs.efmls-configs-nvim;
+        name = "conform-nvim";
+        src = inputs.conform-nvim;
+        doCheck = false;
+      })
+      (pkgs'.vimUtils.buildVimPlugin {
+        name = "nvim-lint";
+        src = inputs.nvim-lint;
         doCheck = false;
       })
       (pkgs'.vimUtils.buildVimPlugin {
@@ -86,10 +91,7 @@ in
       # YAML:
       yaml-language-server
       actionlint
-      yq
-
-      # General purpose:
-      efm-langserver
+      yq-go
     ];
 
     config = ''
@@ -98,63 +100,6 @@ in
           cache = {
             directory = vim.env.HOME .. "/.cache/ccls",
           },
-        },
-      })
-
-      vim.lsp.config("efm", {
-        filetypes = {"java", "json", "nix", "python", "sh", "yaml"},
-        init_options = {
-          codeAction = true,
-          completion = true,
-          documentFormatting = true,
-          documentRangeFormatting = true,
-          documentSymbol = true,
-          hover = true,
-        },
-        settings = {
-          rootMarkers = {
-            ".git/",
-          },
-          -- See the following page for ideas:
-          -- https://github.com/creativenull/efmls-configs-nvim/blob/main/doc/SUPPORTED_LIST.md
-          languages = {
-            java = {
-              {
-                formatCommand = require("efmls-configs.fs").executable("google-java-format")
-                  .. " $(echo -n ''${--useless:rowStart} ''${--useless:rowEnd}"
-                  .. " | xargs -n4 -r sh -c 'echo"
-                  .. " --skip-sorting-imports"
-                  .. " --skip-removing-unused-imports"
-                  .. " --skip-reflowing-long-strings"
-                  .. " --skip-javadoc-formatting"
-                  .. " --lines $(($1+1)):$(($3+1))'"
-                  .. ") -",
-                formatStdin = true,
-                rootMarkers = { ".project", "classpath", "pom.xml" },
-              },
-            },
-            json = {
-              require("efmls-configs.formatters.jq"),
-              require("efmls-configs.linters.jq"),
-            },
-            nix = {
-              require("efmls-configs.formatters.nixfmt"),
-              require("efmls-configs.linters.statix"),
-            },
-            python = {
-              require("efmls-configs.formatters.black"),
-              require("efmls-configs.formatters.isort"),
-              require("efmls-configs.linters.pylint"),
-            },
-            sh = {
-              require("efmls-configs.formatters.beautysh"),
-              require("efmls-configs.linters.shellcheck"),
-            },
-            yaml = {
-              require("efmls-configs.formatters.yq"),
-              require("efmls-configs.linters.actionlint"),
-            },
-          }
         },
       })
 
@@ -191,7 +136,6 @@ in
         "bashls",
         "ccls",
         "dockerls",
-        "efm",
         "gopls",
         "intelephense",
         "jdtls",
@@ -199,6 +143,46 @@ in
         "pyright",
         "rust_analyzer",
         "yamlls",
+      })
+
+      require("conform").setup({
+        formatters = {
+          ["google-java-format"] = {
+            range_args = function(_, ctx)
+              return {
+                "--skip-sorting-imports",
+                "--skip-removing-unused-imports",
+                "--skip-reflowing-long-strings",
+                "--skip-javadoc-formatting",
+                "--lines",
+                ctx.range.start[1] .. ":" .. ctx.range["end"][1],
+                "-",
+              }
+            end,
+          },
+        },
+        formatters_by_ft = {
+          java = {"google-java-format"},
+          json = {"jq"},
+          nix = {"nixfmt"},
+          python = {"black", "isort"},
+          sh = {"beautysh"},
+          yaml = {"yq"},
+        },
+      })
+
+      require("lint").linters_by_ft = {
+        json = {"jq"},
+        nix = {"statix"},
+        python = {"pylint"},
+        sh = {"shellcheck"},
+        yaml = {"actionlint"},
+      }
+
+      vim.api.nvim_create_autocmd({"BufEnter", "BufWritePost", "InsertLeave"}, {
+        callback = function ()
+          require("lint").try_lint()
+        end,
       })
 
       vim.diagnostic.config({
@@ -279,12 +263,12 @@ in
       {
         lhs = "<Leader>cf";
         name = "Code format";
-        lua = ''vim.lsp.buf.format({async = true})'';
+        lua = ''require("conform").format({async = true, lsp_format = "fallback"})'';
       }
       {
         lhs = "<Leader>cf";
         name = "Code format";
-        lua = ''vim.lsp.buf.format({async = true})'';
+        lua = ''require("conform").format({async = true, lsp_format = "fallback"})'';
         mode = "v";
       }
       {

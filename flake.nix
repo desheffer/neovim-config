@@ -16,8 +16,8 @@
       url = "github:akinsho/bufferline.nvim";
       flake = false;
     };
-    efmls-configs-nvim = {
-      url = "github:creativenull/efmls-configs-nvim";
+    conform-nvim = {
+      url = "github:stevearc/conform.nvim";
       flake = false;
     };
     friendly-snippets = {
@@ -46,6 +46,10 @@
     };
     nvim-hlslens = {
       url = "github:kevinhwang91/nvim-hlslens";
+      flake = false;
+    };
+    nvim-lint = {
+      url = "github:mfussenegger/nvim-lint";
       flake = false;
     };
     nvim-lspconfig = {

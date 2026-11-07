@@ -32,19 +32,19 @@
         "type": "github"
       }
     },
-    "efmls-configs-nvim": {
+    "conform-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1788229808,
-        "narHash": "sha256-0Ta8Oo1k+3RKWngWrmw0QDe0LDgjxQtd7nfGDZo2WgQ=",
-        "owner": "creativenull",
-        "repo": "efmls-configs-nvim",
-        "rev": "f145a2e8212a195d44c1430e76cbc96efb0afb08",
+        "lastModified": 1786458409,
+        "narHash": "sha256-7VkQLpkDak/O5tphT/EWX/rE9r0Dd2UCF5CFbl4rK+A=",
+        "owner": "stevearc",
+        "repo": "conform.nvim",
+        "rev": "016802de402556da54c36bd7359b441266b01cdd",
         "type": "github"
       },
       "original": {
-        "owner": "creativenull",
-        "repo": "efmls-configs-nvim",
+        "owner": "stevearc",
+        "repo": "conform.nvim",
         "type": "github"
       }
     },
@@ -210,6 +210,22 @@
         "type": "github"
       }
     },
+    "nvim-lint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793269300,
+        "narHash": "sha256-Q/UqA4DQ242FXcUYYAB7RWQ6RdUkDC57M97k3SWx2Gw=",
+        "owner": "mfussenegger",
+        "repo": "nvim-lint",
+        "rev": "52107ce2076a27a285af781248e2c59bad817cd0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mfussenegger",
+        "repo": "nvim-lint",
+        "type": "github"
+      }
+    },
     "nvim-lspconfig": {
       "flake": false,
       "locked": {
@@ -294,7 +310,7 @@
       "inputs": {
         "alpha-nvim": "alpha-nvim",
         "bufferline-nvim": "bufferline-nvim",
-        "efmls-configs-nvim": "efmls-configs-nvim",
+        "conform-nvim": "conform-nvim",
         "flake-utils": "flake-utils",
         "friendly-snippets": "friendly-snippets",
         "gitsigns-nvim": "gitsigns-nvim",
@@ -304,6 +320,7 @@
         "markdown-preview-nvim": "markdown-preview-nvim",
         "nixpkgs": "nixpkgs",
         "nvim-hlslens": "nvim-hlslens",
+        "nvim-lint": "nvim-lint",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-tree-lua": "nvim-tree-lua",
         "nvim-treesitter-context": "nvim-treesitter-context",
