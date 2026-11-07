@@ -8,10 +8,6 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
-    FTerm-nvim = {
-      url = "github:numToStr/FTerm.nvim";
-      flake = false;
-    };
     alpha-nvim = {
       url = "github:goolord/alpha-nvim";
       flake = false;

@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "FTerm-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1668331546,
-        "narHash": "sha256-fCtAs6qsvWOYRp2Z1AwQa2ByUZcUCMKfuYBoNTP7EeY=",
-        "owner": "numToStr",
-        "repo": "FTerm.nvim",
-        "rev": "d1320892cc2ebab472935242d9d992a2c9570180",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numToStr",
-        "repo": "FTerm.nvim",
-        "type": "github"
-      }
-    },
     "alpha-nvim": {
       "flake": false,
       "locked": {
@@ -388,7 +372,6 @@
     },
     "root": {
       "inputs": {
-        "FTerm-nvim": "FTerm-nvim",
         "alpha-nvim": "alpha-nvim",
         "bufferline-nvim": "bufferline-nvim",
         "cmp-buffer": "cmp-buffer",
