@@ -3,16 +3,13 @@ inputs:
 {
   config,
   lib,
-  pkgs,
+  pkgs',
   ...
 }:
 
 with lib;
 
 let
-  lib' = import ../lib inputs;
-  pkgs' = lib'.mkPkgs pkgs.system;
-
   cfg = config.programs.neovim-config.completion;
 
 in

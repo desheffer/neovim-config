@@ -1,9 +1,18 @@
 inputs:
 
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
+let
+  lib' = import ../lib inputs;
+
+in
 {
   imports = [
     (import ./neovim.nix inputs)
@@ -28,4 +37,6 @@ with lib;
     (import ./whitespace.nix inputs)
     (import ./window.nix inputs)
   ];
+
+  config._module.args.pkgs' = lib'.mkPkgs pkgs.system;
 }
