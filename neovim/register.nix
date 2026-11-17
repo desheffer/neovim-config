@@ -22,9 +22,37 @@ in
 
     mappings = [
       {
+        lhs = "<Leader>p";
+        name = "Paste from system clipboard";
+        rhs = ''"+p'';
+      }
+      {
+        lhs = "<Leader>p";
+        name = "Paste from system clipboard";
+        rhs = ''"+p'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>P";
+        name = "Paste from primary selection";
+        rhs = ''"*p'';
+      }
+      {
+        lhs = "<Leader>P";
+        name = "Paste from primary selection";
+        rhs = ''"*p'';
+        mode = "v";
+      }
+      {
         lhs = "<Leader>y";
         name = "Copy to system clipboard";
         rhs = ''"+y'';
+        mode = "v";
+      }
+      {
+        lhs = "<Leader>Y";
+        name = "Copy to primary selection";
+        rhs = ''"*y'';
         mode = "v";
       }
     ];
